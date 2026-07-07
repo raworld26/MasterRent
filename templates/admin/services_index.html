@@ -1,0 +1,36 @@
+<section class="dashboard-shell">
+    <header class="dashboard-header">
+        <div>
+            <p class="eyebrow">Amministrazione &middot; MasteRent</p>
+            <h1><[title]></h1>
+        </div>
+        <div class="header-actions">
+            <a class="button-secondary" href="<[back_url]>">Dashboard</a>
+            <a class="button-primary" href="<[create_url]>">Nuovo servizio</a>
+        </div>
+    </header>
+
+    <[notice]>
+
+    <section class="panel service-management-panel">
+        <div class="panel-heading">
+            <h2>Gestione servizi</h2>
+            <p class="panel-subtitle">Rotte protette, permessi, menu e gruppi abilitati.</p>
+        </div>
+
+        <ul class="service-management-summary">
+            <[summary_cards]>
+        </ul>
+
+        <[filter_form]>
+
+        <div class="service-results-heading">
+            <h3>Servizi trovati</h3>
+            <span><[results_count]> risultati</span>
+        </div>
+
+        <div class="service-admin-groups">
+            <[service_sections]>
+        </div>
+    </section>
+</section>

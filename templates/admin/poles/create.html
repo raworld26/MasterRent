@@ -1,0 +1,42 @@
+<section class="dashboard-shell">
+    <header class="dashboard-header">
+        <div>
+            <p class="eyebrow">Amministrazione &middot; MasteRent</p>
+            <h1>Nuovo Polo Didattico</h1>
+        </div>
+        <a class="button-secondary" href="<[back_url]>">Annulla e Torna</a>
+    </header>
+
+    <div class="panel form-panel admin-form-panel">
+        <div class="panel-heading">
+            <h2>Dati del polo didattico</h2>
+            <p class="panel-subtitle">Compila il modulo per registrare una nuova sede universitaria UNIVAQ.</p>
+        </div>
+
+        <[error]>
+
+        <form action="<[action_url]>" method="POST" class="form-standard">
+            <[csrf_field]>
+
+            <div class="form-group">
+                <label for="name">Nome Polo Didattico <span class="required">*</span></label>
+                <input type="text" id="name" name="name" value="<[name]>" placeholder="Es. Polo Didattico di Coppito, Polo di Roio" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="code">Codice Alias (opzionale - generato automaticamente se vuoto)</label>
+                <input type="text" id="code" name="code" value="<[code]>" placeholder="Es. polo_coppito, polo_roio (lettere minuscole e underscore)">
+                <small class="form-help">Utilizzato per identificare in modo univoco il polo a sistema ed associarlo alle distanze degli alloggi.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Descrizione e Note (Dipartimenti ospitati)</label>
+                <textarea id="description" name="description" rows="5" placeholder="Inserisci info sui dipartimenti didattici ospitati e la collocazione geografica..."><[description]></textarea>
+            </div>
+
+            <div class="form-actions admin-form-actions">
+                <button type="submit" class="button-primary">Salva Polo</button>
+            </div>
+        </form>
+    </div>
+</section>

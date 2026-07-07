@@ -1,0 +1,66 @@
+<section class="dashboard-shell">
+    <header class="dashboard-header">
+        <div>
+            <p class="eyebrow">Area Studente &middot; MasteRent</p>
+            <h1>Dashboard studente</h1>
+        </div>
+        <div class="header-actions">
+            <a class="button-secondary" href="<[profile_url]>">Profilo</a>
+            <a class="button-secondary" href="<[logout_url]>">Logout</a>
+        </div>
+    </header>
+
+    <section class="account-summary">
+        <div>
+            <span class="summary-label">Studente</span>
+            <strong><[student_name]></strong>
+        </div>
+        <div>
+            <span class="summary-label">Email</span>
+            <strong><[student_email]></strong>
+        </div>
+    </section>
+
+    <[notice]>
+
+    <div class="dashboard-grid">
+        <section class="panel">
+            <div class="panel-heading">
+                <h2>Stanze preferite</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Stanza</th>
+                            <th>Zona</th>
+                            <th>Prezzo</th>
+                            <th>Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody><[favorite_rows]></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <h2>Richieste visita</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Stanza</th>
+                            <th>Stato</th>
+                            <th>Data visita</th>
+                            <th>Messaggi</th>
+                        </tr>
+                    </thead>
+                    <tbody><[request_rows]></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</section>

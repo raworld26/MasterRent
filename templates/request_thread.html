@@ -1,0 +1,53 @@
+<section class="dashboard-shell">
+    <header class="dashboard-header">
+        <div>
+            <p class="eyebrow"><[eyebrow]></p>
+            <h1><[page_heading]></h1>
+        </div>
+        <a class="button-secondary" href="<[back_url]>">Torna alla dashboard</a>
+    </header>
+
+    <[notice]>
+
+    <section class="panel request-summary">
+        <div>
+            <span class="summary-label">Stanza</span>
+            <strong><[room_name]></strong>
+            <p><[property_title]></p>
+        </div>
+        <div>
+            <span class="summary-label">Partecipanti</span>
+            <strong><[student_name]></strong>
+            <p><[landlord_name]></p>
+        </div>
+        <div>
+            <span class="summary-label">Stato</span>
+            <[status_badge]>
+            <p><[visit_date]></p>
+        </div>
+        <div>
+            <span class="summary-label">Creata il</span>
+            <strong><[created_at]></strong>
+            <p><[initial_message]></p>
+        </div>
+    </section>
+
+    <[status_form]>
+
+    <section class="panel">
+        <div class="panel-heading">
+            <h2>Messaggi richiesta</h2>
+            <p class="panel-subtitle">Thread semplice tra studente e proprietario.</p>
+        </div>
+        <div class="message-list">
+            <[message_items]>
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="panel-heading">
+            <h2>Rispondi</h2>
+        </div>
+        <[reply_form]>
+    </section>
+</section>

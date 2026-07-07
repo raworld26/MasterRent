@@ -1,0 +1,72 @@
+<section class="dashboard-shell">
+    <header class="dashboard-header">
+        <div>
+            <p class="eyebrow">Area Locatore &middot; Alloggio: <[property_title]></p>
+            <h1>Aggiungi Stanze disponibili</h1>
+        </div>
+        <a class="button-primary" href="<[finish_url]>">Completa e Termina</a>
+    </header>
+
+    <div class="panel form-panel">
+        <div class="panel-heading">
+            <h2>Inserisci i dettagli del Posto Letto / Stanza</h2>
+            <p class="panel-subtitle">Compila il modulo per ciascuna stanza che metti in affitto in questo appartamento. Puoi aggiungerne più di una in sequenza.</p>
+        </div>
+
+        <[success]>
+        <[error]>
+
+        <form action="<[action_url]>" method="POST" class="form-standard">
+            <[csrf_field]>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Nome identificativo stanza <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" value="<[name]>" placeholder="Es. Stanza Singola Premium, Doppia lato est" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="type">Tipologia Stanza <span class="required">*</span></label>
+                    <select id="type" name="type" required>
+                        <option value="single" <[type_single_selected]>>Stanza Singola</option>
+                        <option value="double" <[type_double_selected]>>Stanza Doppia</option>
+                        <option value="bed_space" <[type_bed_space_selected]>>Posto letto in Doppia</option>
+                        <option value="entire_apartment" <[type_entire_selected]>>Intero appartamento</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="price_monthly">Canone Mensile (€) <span class="required">*</span></label>
+                    <input type="number" id="price_monthly" name="price_monthly" value="<[price_monthly]>" step="0.01" min="1" placeholder="Es. 250" required>
+                </div>
+                <div class="form-group form-group-small">
+                    <label for="deposit_months">Mesi di Caparra <span class="required">*</span></label>
+                    <input type="number" id="deposit_months" name="deposit_months" value="<[deposit_months]>" min="0" max="6" required>
+                </div>
+                <div class="form-group">
+                    <label for="contract_type">Tipo Contratto <span class="required">*</span></label>
+                    <input type="text" id="contract_type" name="contract_type" value="<[contract_type]>" placeholder="Es. Transitorio Studenti" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="check-row">
+                    <input type="checkbox" name="expenses_included" value="1" <[expenses_included_checked]>> Utenze / Spese incluse nel prezzo
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Servizi e Accessori inclusi in questa stanza:</label>
+                <div class="choice-list">
+                    <[amenities_list]>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="button-primary">Aggiungi questa Stanza</button>
+                <a class="button-secondary" href="<[finish_url]>">Fine / Torna alla Dashboard</a>
+            </div>
+        </form>
+    </div>
+</section>

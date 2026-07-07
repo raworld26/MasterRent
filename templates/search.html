@@ -1,0 +1,70 @@
+<section class="dashboard-shell">
+    <header class="dashboard-header">
+        <div>
+            <h1>Cerca stanze</h1>
+        </div>
+        <a class="button-secondary" href="<[home_url]>">Home</a>
+    </header>
+
+    <div class="panel search-filter-panel">
+        <form action="<[action_url]>" method="GET" class="form-standard">
+            <div class="search-filter-grid">
+                <div class="form-group">
+                    <label>Cerca per zona, via o annuncio</label>
+                    <input type="text" name="q" value="<[q]>" placeholder="Centro, Pettino, Via Uruguay">
+                </div>
+                <div class="form-group">
+                    <label>Quartiere</label>
+                    <select name="neighborhood_id">
+                        <[neighborhood_options]>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tipologia</label>
+                    <select name="type">
+                        <[type_options]>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Polo didattico</label>
+                    <select name="pole_id">
+                        <[pole_options]>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Prezzo minimo</label>
+                    <input type="number" name="price_min" min="0" step="1" inputmode="numeric" value="<[price_min]>" placeholder="250">
+                </div>
+                <div class="form-group">
+                    <label>Prezzo massimo</label>
+                    <input type="number" name="price_max" min="0" step="1" inputmode="numeric" value="<[price_max]>" placeholder="450">
+                </div>
+                <div class="form-group">
+                    <label>Ordina</label>
+                    <select name="sort">
+                        <option value="price_asc" <[sort_price_asc_selected]>>Prezzo crescente</option>
+                        <option value="price_desc" <[sort_price_desc_selected]>>Prezzo decrescente</option>
+                        <option value="newest" <[sort_newest_selected]>>Piu recenti</option>
+                        <option value="distance" <[sort_distance_selected]>>Distanza dal polo</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="check-row"><input type="checkbox" name="furnished" value="1"<[furnished_checked]>> Solo stanze arredate</label>
+            </div>
+            <div class="form-actions search-filter-actions">
+                <button type="submit">Filtra</button>
+                <a class="button-secondary" href="<[action_url]>">Azzera</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="search-results-heading">
+        <h2>Risultati</h2>
+        <p><[results_summary]></p>
+    </div>
+
+    <div class="search-results-grid">
+        <[room_cards]>
+    </div>
+</section>

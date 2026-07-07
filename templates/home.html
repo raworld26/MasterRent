@@ -1,0 +1,51 @@
+<section class="dashboard-shell">
+    <header class="dashboard-header public-hero">
+        <div>
+            <h1>Stanze per studenti a L'Aquila</h1>
+            <p class="lead">Ricerca stanze, salva preferiti e invia richieste visita da un'interfaccia semplice.</p>
+        </div>
+        <a class="button-secondary" href="<[account_url]>"><[account_label]></a>
+    </header>
+
+    <section class="panel home-search-panel">
+        <div class="panel-heading">
+            <h2>Cerca una stanza</h2>
+        </div>
+        <form action="<[search_url]>" method="GET" class="home-search-form">
+            <div class="home-search-fields">
+                <div class="form-group">
+                    <label>Cerca zona o via</label>
+                    <input type="text" name="q" placeholder="Pettino, Centro, Via Roma">
+                </div>
+                <div class="form-group">
+                    <label>Quartiere</label>
+                    <select name="neighborhood_id">
+                        <[neighborhood_options]>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tipologia</label>
+                    <select name="type">
+                        <[type_options]>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Prezzo minimo</label>
+                    <input type="number" name="price_min" min="0" step="1" inputmode="numeric" placeholder="250">
+                </div>
+                <div class="form-group">
+                    <label>Prezzo massimo</label>
+                    <input type="number" name="price_max" min="0" step="1" inputmode="numeric" placeholder="450">
+                </div>
+                <div class="form-actions home-search-actions">
+                    <button type="submit">Cerca stanze</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <div class="dashboard-properties-grid room-card-grid">
+        <h2>Ultime stanze disponibili</h2>
+        <[room_cards]>
+    </div>
+</section>

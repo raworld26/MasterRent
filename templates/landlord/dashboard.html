@@ -1,0 +1,55 @@
+<section class="dashboard-shell">
+    <header class="dashboard-header">
+        <div>
+            <p class="eyebrow">Area Locatore &middot; MasteRent L'Aquila</p>
+            <h1>I Miei Alloggi</h1>
+        </div>
+        <div class="header-actions">
+            <a class="button-secondary" href="<[profile_url]>">Profilo</a>
+            <a class="button-secondary" href="<[logout_url]>">Logout</a>
+            <a class="button-primary" href="<[create_property_url]>">Nuovo Annuncio</a>
+        </div>
+    </header>
+
+    <section class="account-summary">
+        <div>
+            <span class="summary-label">Proprietario</span>
+            <strong><[landlord_name]></strong>
+        </div>
+        <div>
+            <span class="summary-label">Email</span>
+            <strong><[landlord_email]></strong>
+        </div>
+    </section>
+
+    <[stats_cards]>
+
+    <[notice]>
+
+    <section class="panel">
+        <div class="panel-heading">
+            <h2>Richieste visita ricevute</h2>
+            <p class="panel-subtitle">Gestione base delle richieste inviate dagli studenti.</p>
+        </div>
+        <div class="table-responsive">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Studente</th>
+                        <th>Stanza</th>
+                        <th>Stato</th>
+                        <th>Messaggio</th>
+                        <th>Azioni</th>
+                    </tr>
+                </thead>
+                <tbody><[request_rows]></tbody>
+            </table>
+        </div>
+    </section>
+
+    <div class="dashboard-properties-grid">
+        <h2>I tuoi annunci pubblicati</h2>
+        <[property_cards]>
+    </div>
+</section>
