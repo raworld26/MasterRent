@@ -14,8 +14,8 @@ Questa è la **Fase 2** del progetto MasterRent. In questa fase il codice della 
 3. Importa gli script SQL che trovi in `sql/` in ordine sequenziale (da `00` a `09`).
 4. Punta la *Document Root* del tuo web server (o usa `php -S localhost:8000`) alla cartella `public/` del progetto.
 5. Accedi utilizzando gli account demo (Password per tutti: `Admin123!`):
-   - **Admin:** `admin@masterrent.it`
-   - **OdO (Offerente):** `odo@masterrent.it`
-   - **Studente:** `studente@masterrent.it`
+   - **Admin:** `admin@uniaffitti.local`
+   - **OdO (Offerente):** `odo@uniaffitti.local`
+   - **Studente:** `studente@uniaffitti.local`
 
 *Per la documentazione completa, il diario di sviluppo LLM e la relazione comparativa, torna sul branch `main` e consulta la cartella `docs/`.*
