@@ -46,7 +46,7 @@ Nella cartella `docs/` di questo branch (`main`) troverai tutta la documentazion
 - `DocTW.pdf` - Relazione e documentazione ufficiale del progetto
 - `RELAZIONE_COMPARATIVA.md` - Confronto tra la Fase 1 e la Fase 2
 - `DIARIO_SVILUPPO.md` - Diario di sviluppo
-- `ER_DIAGRAM` - Diagrammi Entità-Relazione (formato mmd, png, svg)
+- `ER_DIAGRAM` - Diagrammi Entità-Relazione (formati png e md)
 - `LOG_PROMPT.md` - Log dei prompt utilizzati e ragionamenti con gli LLM
 - `prompt_screenshots/` - Screenshots delle sessioni LLM
 
