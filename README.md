@@ -17,22 +17,52 @@ Il progetto è suddiviso in due branch principali, che rappresentano l'evoluzion
 - Database MySQL o MariaDB
 
 ### Avviare la Fase 1
-1. Spostati sul branch dedicato:
-   ```bash
-   git checkout phase1
-   ```
-2. Crea un database MySQL chiamato `masterrent`.
-3. Importa gli script SQL presenti nella cartella `sql/` in ordine sequenziale (da `000` a `010`). Assicurati di notare la porta del tuo DB (di default `3306`, su alcuni sistemi XAMPP `3307`).
-4. Imposta la *Document Root* del tuo web server sulla cartella `public/` (oppure avvia il server PHP locale puntando alla directory `public/`).
+Importare gli script SQL in ordine numerico e avviare il server PHP integrato:
+
+```bash
+# Import SQL
+sql/000_database.sql
+sql/001_auth_schema.sql
+sql/002_auth_seed.sql
+sql/003_laquila_geo_schema.sql
+sql/004_laquila_geo_seed.sql
+sql/005_laquila_geo_services.sql
+sql/006_properties_schema.sql
+sql/007_properties_seed.sql
+sql/008_engagement_schema.sql
+sql/009_engagement_seed.sql
+sql/010_my_house_flow.sql
+
+# Avvio server
+git checkout phase1
+cd C:\Users\Ospite\Desktop\MasterRent
+php -S 127.0.0.1:8000 -t public
+```
+Il portale è quindi raggiungibile su **http://127.0.0.1:8000/**.
+
 
 ### Avviare la Fase 2
-1. Spostati sul branch dedicato:
-   ```bash
-   git checkout phase2
-   ```
-2. Crea un database MySQL chiamato `uniaffitti`.
-3. Importa gli script SQL presenti nella cartella `sql/` in ordine sequenziale (da `00` a `09`).
-4. Imposta la *Document Root* del tuo web server sulla cartella `public/` (oppure avvia il server PHP locale puntando alla directory `public/`).
+Importare gli script SQL in ordine numerico e avviare il server PHP integrato:
+
+```bash
+# Import SQL
+sql/00_database.sql
+sql/01_auth_schema.sql
+sql/02_geo_schema.sql
+sql/03_properties_schema.sql
+sql/04_auth_seed.sql
+sql/05_geo_seed.sql
+sql/06_demo_seed.sql
+sql/07_engagement_schema.sql
+sql/08_demo_engagement.sql
+sql/09_my_house_flow.sql
+
+# Avvio server
+git checkout phase2
+cd C:\Users\Ospite\Desktop\MasterRent
+php -S 127.0.0.1:8000 -t public
+```
+Il portale è quindi raggiungibile su **http://127.0.0.1:8000/**.
 
 ### Account Demo
 Per entrambe le fasi puoi accedere con i seguenti account dimostrativi (password per tutti: `Admin123!`):
