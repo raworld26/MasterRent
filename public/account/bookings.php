@@ -8,7 +8,9 @@ require_login();
 require_service('account.bookings');
 
 $user = current_user();
-$rows = (new BookingRepository())->byStudent((int) $user['id']);
+$uid = (int) $user['id'];
+$rows = (new BookingRepository())->byStudent($uid);
+$reviews = new ReviewRepository();
 
 $listHtml = $rows === []
     ? render_empty_state(
@@ -18,13 +20,28 @@ $listHtml = $rows === []
         'Cerca stanze',
         'inbox'
     )
-    : render_list('frontend/request_rows', array_map(static fn ($b) => [
-        'req_url' => e(url_for('booking.php?id=' . $b['id'])),
-        'req_room' => e($b['room_name']),
-        'req_sub' => e($b['property_title'] . ' · ' . $b['neighborhood_name']),
-        'req_date' => e(date('d/m/Y', strtotime((string) $b['created_at']))),
-        'req_status' => booking_status_badge((string) $b['status']),
-    ], $rows));
+    : render_list('frontend/request_rows', array_map(static function ($b) use ($reviews, $uid) {
+        // Soggiorno concluso: permetti la recensione anche se la stanza non è più tra gli annunci.
+        $cta = '';
+        if ((string) $b['status'] === 'completed') {
+            if ($reviews->hasReviewed($uid, (int) $b['room_id'])) {
+                $cta = '<div class="request-cta"><span class="muted text-sm">Recensione inviata ✓</span></div>';
+            } else {
+                $cta = '<div class="request-cta"><a class="button button-small" href="'
+                    . e(url_for('room.php?id=' . (int) $b['room_id']) . '#recensioni')
+                    . '">Recensisci</a></div>';
+            }
+        }
+
+        return [
+            'req_url' => e(url_for('booking.php?id=' . $b['id'])),
+            'req_room' => e($b['room_name']),
+            'req_sub' => e($b['property_title'] . ' · ' . $b['neighborhood_name']),
+            'req_date' => e(date('d/m/Y', strtotime((string) $b['created_at']))),
+            'req_status' => booking_status_badge((string) $b['status']),
+            'req_cta' => $cta,
+        ];
+    }, $rows));
 
 $content = render_template('frontend/simple_page', [
     'page_title' => 'Le mie richieste',

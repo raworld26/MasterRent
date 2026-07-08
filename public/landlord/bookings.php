@@ -19,6 +19,7 @@ foreach ($bookings as $b) {
         'req_sub'    => e($b['property_title'] . ' · ' . ($b['student_name'] ?? '')),
         'req_date'   => e(date('d/m/Y', strtotime((string) $b['created_at']))),
         'req_status' => booking_status_badge((string) $b['status']),
+        'req_cta'    => '',
     ];
 }
 
