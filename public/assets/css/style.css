@@ -940,6 +940,16 @@ img {
     padding: 18px;
 }
 
+.home-shell {
+    --home-block-gap: 18px;
+    display: grid;
+    gap: var(--home-block-gap);
+}
+
+.home-shell > .dashboard-header {
+    margin-bottom: 0;
+}
+
 .home-search-panel {
     padding: 16px;
 }
@@ -1037,6 +1047,18 @@ input[type="file"] {
 
 .room-card-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.home-shell .room-card-grid,
+.home-shell .item-list {
+    gap: var(--home-block-gap);
+}
+
+.home-pole-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--home-block-gap);
+    margin: 0;
 }
 
 .room-card-grid h2 {
