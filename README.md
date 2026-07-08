@@ -66,9 +66,9 @@ Il portale è quindi raggiungibile su **http://127.0.0.1:8000/**.
 
 ### Account Demo
 Per entrambe le fasi puoi accedere con i seguenti account dimostrativi (password per tutti: `Admin123!`):
-- **Admin**: `admin@masterrent.it`
-- **OdO (Offerente)**: `odo@masterrent.it`
-- **Studente**: `studente@masterrent.it`
+- **Admin**: `admin@uniaffitti.local`
+- **OdO (Offerente)**: `odo@uniaffitti.local`
+- **Studente**: `studente@uniaffitti.local`
 
 ## Documentazione
 
