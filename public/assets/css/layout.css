@@ -1343,6 +1343,7 @@
     gap: var(--space-4);
     align-items: start;
 }
+.profile-grid .panel + .panel { margin-top: 0; }
 
 /* ---- Gestione immobile (landlord) ------------------------------------------------ */
 .mng-section { margin-top: var(--space-6); }
