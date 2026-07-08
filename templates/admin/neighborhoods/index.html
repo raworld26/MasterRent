@@ -1,0 +1,38 @@
+<section class="dashboard-shell">
+    <header class="dashboard-header">
+        <div>
+            <p class="eyebrow">Amministrazione &middot; MasterRent</p>
+            <h1>Gestione Quartieri</h1>
+        </div>
+        <div class="header-actions">
+            <a class="button-secondary" href="<[back_url]>">Torna alla Dashboard</a>
+            <a class="button-primary" href="<[create_url]>">Nuovo Quartiere</a>
+        </div>
+    </header>
+
+    <[notice]>
+
+    <div class="panel admin-list-panel">
+        <div class="panel-heading">
+            <h2>Quartieri registrati per la ricerca</h2>
+            <p class="panel-subtitle">Questi quartieri sono disponibili per i locatori all'inserimento dell'immobile e per i filtri di ricerca degli studenti.</p>
+        </div>
+        
+        <div class="table-responsive">
+            <table class="data-table admin-data-table">
+                <thead>
+                    <tr>
+                        <th class="col-id">ID</th>
+                        <th class="col-name">Nome Quartiere</th>
+                        <th class="col-code">Codice (Alias)</th>
+                        <th>Descrizione e Note logistiche</th>
+                        <th class="col-actions">Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <[neighborhood_rows]>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

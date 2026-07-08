@@ -1,0 +1,72 @@
+<section class="dashboard-shell">
+    <header class="dashboard-header">
+        <div>
+            <p class="eyebrow">Account &middot; MasterRent</p>
+            <h1>Il mio profilo</h1>
+        </div>
+        <a class="button-secondary" href="<[back_url]>">Area riservata</a>
+    </header>
+
+    <section class="panel form-panel">
+        <div class="panel-heading">
+            <h2>Dati personali</h2>
+        </div>
+        <[error_profile]>
+        <form class="form-standard" method="POST" action="<[action_url]>">
+            <[csrf_profile]>
+            <input type="hidden" name="action" value="profile">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="first_name">Nome</label>
+                    <input id="first_name" name="first_name" type="text" value="<[first_name]>" maxlength="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Cognome</label>
+                    <input id="last_name" name="last_name" type="text" value="<[last_name]>" maxlength="100" required>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" value="<[email]>" disabled>
+                    <small>L'email non è modificabile.</small>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefono</label>
+                    <input id="phone" name="phone" type="text" value="<[phone]>" maxlength="30">
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="button-primary">Salva profilo</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="panel form-panel">
+        <div class="panel-heading">
+            <h2>Cambia password</h2>
+        </div>
+        <[error_password]>
+        <form class="form-standard" method="POST" action="<[action_url]>">
+            <[csrf_password]>
+            <input type="hidden" name="action" value="password">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="current_password">Password attuale</label>
+                    <input id="current_password" name="current_password" type="password" autocomplete="current-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="new_password">Nuova password</label>
+                    <input id="new_password" name="new_password" type="password" autocomplete="new-password" minlength="8" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Conferma nuova password</label>
+                    <input id="confirm_password" name="confirm_password" type="password" autocomplete="new-password" minlength="8" required>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="button-primary">Aggiorna password</button>
+            </div>
+        </form>
+    </section>
+</section>

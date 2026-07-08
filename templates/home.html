@@ -1,0 +1,67 @@
+<section class="dashboard-shell">
+    <header class="dashboard-header public-hero">
+        <div>
+            <h1>Stanze per studenti a L'Aquila</h1>
+            <p class="lead">Cerca per quartiere e polo didattico, prenota la visita e blocca la stanza con una caparra simulata.</p>
+            <p class="muted"><[room_count]> stanze disponibili in <[neighborhood_count]> quartieri.</p>
+        </div>
+        <a class="button-secondary" href="<[account_url]>"><[account_label]></a>
+    </header>
+
+    <section class="panel home-search-panel">
+        <div class="panel-heading">
+            <h2>Cerca una stanza</h2>
+        </div>
+        <form action="<[search_url]>" method="GET" class="home-search-form">
+            <div class="home-search-fields">
+                <div class="form-group">
+                    <label>Cerca zona o via</label>
+                    <input type="text" name="q" placeholder="Centro, Pettino, Via Roma">
+                </div>
+                <div class="form-group">
+                    <label>Quartiere</label>
+                    <select name="neighborhood_id">
+                        <[neighborhood_options]>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Polo universitario</label>
+                    <select name="pole_id">
+                        <[pole_options]>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tipologia</label>
+                    <select name="type">
+                        <[type_options]>
+                    </select>
+                </div>
+                <div class="form-actions home-search-actions">
+                    <button type="submit">Cerca stanze</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <div class="dashboard-properties-grid room-card-grid">
+        <h2>Stanze in evidenza</h2>
+        <[room_cards]>
+    </div>
+
+    <section class="panel">
+        <div class="panel-heading"><h2>Esplora per quartiere</h2></div>
+        <ul class="item-list">
+            <[neighborhood_cards]>
+        </ul>
+    </section>
+
+    <section class="panel">
+        <div class="panel-heading"><h2>Vicino ai poli didattici</h2></div>
+        <p><[pole_chips]></p>
+    </section>
+
+    <section class="panel reviews-panel">
+        <div class="panel-heading"><h2>Dicono di noi</h2></div>
+        <[latest_reviews]>
+    </section>
+</section>
