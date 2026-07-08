@@ -84,8 +84,10 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
         if ($note !== '') {
             $historyNote .= " Note: " . $note;
         }
-        $bookings->updateStatus($id, 'withdrawn', $historyNote, $uid);
-        set_flash('success', 'Rimborso processato e disdetta completata.');
+        // Rapporto concluso (recensibile) e stanza rimessa fra gli annunci disponibili.
+        $bookings->updateStatus($id, 'completed', $historyNote, $uid);
+        (new RoomRepository())->setStatus((int) $booking['room_id'], 'available');
+        set_flash('success', 'Rimborso processato e disdetta completata. La stanza è di nuovo disponibile.');
         redirect($bookingUrl);
     }
 
