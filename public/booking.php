@@ -76,14 +76,15 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
     if ($action === 'refund' && ($isLandlordOwner || $isAdmin) && $status === 'cancellation_requested') {
         $refundAmount = (float) post_str('refund_amount');
         $note = post_str('note');
-        db()->prepare("UPDATE bookings SET status = 'withdrawn', refund_amount = :amt WHERE id = :id")
-            ->execute(['amt' => $refundAmount, 'id' => $id]);
         $historyNote = "Caparra restituita: " . number_format($refundAmount, 2, ',', '.') . " €.";
         if ($note !== '') {
             $historyNote .= " Note: " . $note;
         }
-        booking_add_history($id, 'withdrawn', $historyNote, $uid);
-        set_flash('success', 'Rimborso processato e disdetta completata.');
+        // Rapporto concluso (recensibile) e stanza rimessa fra gli annunci disponibili.
+        booking_update_status($id, 'completed', $historyNote, $uid);
+        db()->prepare("UPDATE rooms SET status = 'available', is_available = 1 WHERE id = :rid")
+            ->execute(['rid' => (int) $booking['room_id']]);
+        set_flash('success', 'Rimborso processato e disdetta completata. La stanza è di nuovo disponibile.');
         redirect($bookingUrl);
     }
 
