@@ -24,7 +24,7 @@ function db(): PDO
             PDO::ATTR_EMULATE_PREPARES => false,
         ]);
     } catch (PDOException $exception) {
-        error_log('[MasteRent] Database connection failed: ' . $exception->getMessage());
+        error_log('[MasterRent] Database connection failed: ' . $exception->getMessage());
         throw new RuntimeException('Connessione al database non disponibile.');
     }
 

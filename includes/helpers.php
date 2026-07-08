@@ -217,7 +217,7 @@ function public_neighborhood_options(int $selectedNeighborhoodId, string $emptyL
     try {
         $rows = db()->query('SELECT id, name FROM neighborhoods ORDER BY name ASC')->fetchAll();
     } catch (Throwable $exception) {
-        error_log('[MasteRent] Neighborhood options query failed: ' . $exception->getMessage());
+        error_log('[MasterRent] Neighborhood options query failed: ' . $exception->getMessage());
         return $html;
     }
     foreach ($rows as $row) {

@@ -20,7 +20,7 @@ function attempt_login(string $email, string $password): bool
         $statement->execute(['email' => $email]);
         $user = $statement->fetch();
     } catch (Throwable $exception) {
-        error_log('[MasteRent] Login query failed: ' . $exception->getMessage());
+        error_log('[MasterRent] Login query failed: ' . $exception->getMessage());
         return false;
     }
 
@@ -46,10 +46,52 @@ function attempt_login(string $email, string $password): bool
         $statement = db()->prepare('UPDATE users SET last_login_at = NOW() WHERE id = :id');
         $statement->execute(['id' => (int) $user['id']]);
     } catch (Throwable $exception) {
-        error_log('[MasteRent] Could not update last_login_at: ' . $exception->getMessage());
+        error_log('[MasterRent] Could not update last_login_at: ' . $exception->getMessage());
     }
 
     return true;
+}
+
+/* Esiste già un utente (non cancellato) con questa email? */
+function email_exists(string $email): bool
+{
+    $stmt = db()->prepare('SELECT 1 FROM users WHERE email = :email AND deleted_at IS NULL LIMIT 1');
+    $stmt->execute(['email' => strtolower(trim($email))]);
+
+    return (bool) $stmt->fetchColumn();
+}
+
+/**
+ * Registra un nuovo utente e gli assegna un gruppo (student/landlord).
+ * L'account viene attivato automaticamente (decisione di progetto).
+ * Ritorna l'id del nuovo utente.
+ */
+function register_user(array $data, string $groupCode): int
+{
+    $db = db();
+
+    $stmt = $db->prepare(
+        'INSERT INTO users (email, password_hash, first_name, last_name, phone, status, email_verified_at)
+         VALUES (:email, :password_hash, :first_name, :last_name, :phone, :status, NOW())'
+    );
+    $stmt->execute([
+        'email' => strtolower(trim((string) $data['email'])),
+        'password_hash' => password_hash((string) $data['password'], PASSWORD_BCRYPT, ['cost' => 12]),
+        'first_name' => trim((string) $data['first_name']),
+        'last_name' => trim((string) $data['last_name']),
+        'phone' => trim((string) ($data['phone'] ?? '')) ?: null,
+        'status' => 'active',
+    ]);
+
+    $userId = (int) $db->lastInsertId();
+
+    $stmt = $db->prepare(
+        'INSERT IGNORE INTO users_has_groups (user_id, group_id)
+         SELECT :user_id, g.id FROM user_groups AS g WHERE g.code = :code'
+    );
+    $stmt->execute(['user_id' => $userId, 'code' => $groupCode]);
+
+    return $userId;
 }
 
 function logout_user(): void

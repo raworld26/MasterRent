@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-define('APP_NAME', 'MasteRent');
+define('APP_NAME', 'MasterRent');
 
-define('DB_HOST', '127.0.0.1;port=3307');
+define('DB_HOST', '127.0.0.1');
 define('DB_NAME', 'masterrent');
 define('DB_USER', 'root');
 define('DB_PASS', '');

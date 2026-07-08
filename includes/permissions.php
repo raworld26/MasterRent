@@ -23,8 +23,42 @@ function is_authenticated(): bool
 function require_login(): void
 {
     if (!is_authenticated()) {
+        set_flash('info', 'Accedi per continuare.');
         redirect(url_for('login.php'));
     }
+}
+
+/* L'utente corrente appartiene al gruppo indicato? */
+function user_has_group(string $groupCode): bool
+{
+    $user = current_user();
+    if ($user === null) {
+        return false;
+    }
+
+    foreach (user_groups((int) $user['id']) as $group) {
+        if (($group['code'] ?? '') === $groupCode) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/* Dopo il login, la pagina iniziale in base al ruolo principale. */
+function role_home_url(): string
+{
+    if (user_has_group('admin')) {
+        return url_for('admin/index.php');
+    }
+    if (user_has_group('landlord')) {
+        return url_for('landlord/index.php');
+    }
+    if (user_has_group('student')) {
+        return url_for('account/index.php');
+    }
+
+    return url_for('index.php');
 }
 
 function user_groups(int $userId): array
@@ -53,7 +87,7 @@ function user_groups(int $userId): array
 
         $cache[$userId] = $statement->fetchAll();
     } catch (Throwable $exception) {
-        error_log('[MasteRent] User groups query failed: ' . $exception->getMessage());
+        error_log('[MasterRent] User groups query failed: ' . $exception->getMessage());
         $cache[$userId] = [];
     }
 
@@ -98,7 +132,7 @@ function user_services(int $userId): array
 
         $cache[$userId] = $statement->fetchAll();
     } catch (Throwable $exception) {
-        error_log('[MasteRent] User services query failed: ' . $exception->getMessage());
+        error_log('[MasterRent] User services query failed: ' . $exception->getMessage());
         $cache[$userId] = [];
     }
 
@@ -132,31 +166,13 @@ function require_service(string $serviceCode): void
 
     http_response_code(403);
 
-    $content = render_template('dashboard.html', [
-        'user_full_name' => e($_SESSION['user_full_name'] ?? ''),
-        'user_email' => e($_SESSION['user_email'] ?? ''),
-        'admin_stats' => '',
-        'management_cards' => '',
-        'group_rows' => '<p class="muted">Accesso negato.</p>',
-        'service_rows' => '<p class="muted">Non hai il permesso richiesto: <code>' . e($serviceCode) . '</code>.</p>',
-        'profile_url' => e(url_for('account/profile.php')),
-        'logout_url' => e(url_for('logout.php')),
-        'logout_form' => '<form method="POST" action="' . e(url_for('logout.php')) . '" class="inline-form">' . csrf_field('logout') . '<button type="submit" class="button-secondary">Logout</button></form>',
-    ]);
+    $content = '<section class="panel">'
+        . '<h1>Accesso negato</h1>'
+        . '<p class="muted">Non disponi del permesso richiesto: <code>' . e($serviceCode) . '</code>.</p>'
+        . '<p><a class="button-primary" href="' . e(role_home_url()) . '">Torna all\'area riservata</a></p>'
+        . '</section>';
 
     render_page('Accesso negato', $content, ['body_class' => 'page-dashboard']);
     exit;
 }
 
-function require_any_service(array $serviceCodes): void
-{
-    require_login();
-
-    foreach ($serviceCodes as $serviceCode) {
-        if (has_service((string) $serviceCode)) {
-            return;
-        }
-    }
-
-    require_service((string) ($serviceCodes[0] ?? ''));
-}

@@ -42,15 +42,18 @@ CREATE TABLE IF NOT EXISTS `rooms` (
   `price_monthly` DECIMAL(10,2) NOT NULL DEFAULT '0.00',
   `deposit_months` INT UNSIGNED NOT NULL DEFAULT 2,
   `expenses_included` TINYINT(1) NOT NULL DEFAULT 0,
-  `contract_type` VARCHAR(100) NOT NULL DEFAULT 'Studente Universitario',
+  `contract_type` VARCHAR(100) NOT NULL DEFAULT 'Transitorio Studenti',
   `is_available` TINYINT(1) NOT NULL DEFAULT 1,
+  -- Stato del ciclo di prenotazione dell'unità:
+  --   available   -> pubblicabile e prenotabile
+  --   reserved    -> caparra pagata, non più prenotabile
+  --   unavailable -> ritirata/non prenotabile (scelta del proprietario)
   `status` ENUM('available','reserved','unavailable') NOT NULL DEFAULT 'available',
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `idx_rooms_property` (`property_id`),
   KEY `idx_rooms_availability` (`is_available`),
-  KEY `idx_rooms_status` (`status`),
   CONSTRAINT `fk_rooms_property`
     FOREIGN KEY (`property_id`) REFERENCES `properties` (`id`)
     ON UPDATE CASCADE
