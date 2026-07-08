@@ -9,11 +9,30 @@ Questa è la **Fase 2** del progetto MasterRent. In questa fase il codice della 
 - Database aggiornato e rinominato in: `uniaffitti`.
 
 ## Come Avviare (Fase 2)
-1. Assicurati di avere un server web (es. XAMPP, MAMP) con PHP 8.2 e MariaDB/MySQL.
-2. Crea un database chiamato `uniaffitti`.
-3. Importa gli script SQL che trovi in `sql/` in ordine sequenziale (da `00` a `09`).
-4. Punta la *Document Root* del tuo web server (o usa `php -S localhost:8000`) alla cartella `public/` del progetto.
-5. Accedi utilizzando gli account demo (Password per tutti: `Admin123!`):
+Importare gli script SQL in ordine numerico e avviare il server PHP integrato:
+
+```bash
+# Import SQL
+sql/00_database.sql
+sql/01_auth_schema.sql
+sql/02_geo_schema.sql
+sql/03_properties_schema.sql
+sql/04_auth_seed.sql
+sql/05_geo_seed.sql
+sql/06_demo_seed.sql
+sql/07_engagement_schema.sql
+sql/08_demo_engagement.sql
+sql/09_my_house_flow.sql
+
+# Avvio server
+git checkout phase2
+cd C:\Users\Ospite\Desktop\MasterRent
+php -S 127.0.0.1:8000 -t public
+```
+Il portale è quindi raggiungibile su **http://127.0.0.1:8000/**.
+
+### Account Demo
+Puoi accedere con i seguenti account dimostrativi (Password per tutti: `Admin123!`):
    - **Admin:** `admin@masterrent.it`
    - **OdO (Offerente):** `odo@masterrent.it`
    - **Studente:** `studente@masterrent.it`
