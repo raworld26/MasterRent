@@ -66,25 +66,6 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
 
     // Il proprietario (o l'admin) rifiuta la richiesta.
     if ($action === 'reject' && ($isLandlordOwner || $isAdmin) && in_array($booking['status'], ['visit_requested', 'approved_pending_deposit'], true)) {
-        $body = post_str('body');
-        if (mb_strlen($body) < 2) {
-            set_flash('danger', 'Il messaggio è troppo corto.');
-        } else {
-            $messages->create($id, $uid, $body);
-            set_flash('success', 'Messaggio inviato.');
-        }
-        redirect($bookingUrl);
-    }
-
-    // Il proprietario (o l'admin) approva la richiesta dopo la visita.
-    if ($action === 'approve' && ($isLandlordOwner || $isAdmin) && $booking['status'] === 'visit_requested') {
-        $bookings->approve($id, $uid);
-        set_flash('success', 'Richiesta approvata: lo studente può ora versare la caparra.');
-        redirect($bookingUrl);
-    }
-
-    // Il proprietario (o l'admin) rifiuta la richiesta.
-    if ($action === 'reject' && ($isLandlordOwner || $isAdmin) && in_array($booking['status'], ['visit_requested', 'approved_pending_deposit'], true)) {
         $bookings->reject($id, post_str('note') ?: null, $uid);
         set_flash('info', 'Richiesta rifiutata.');
         redirect($bookingUrl);
@@ -99,13 +80,11 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
     if ($action === 'refund' && ($isLandlordOwner || $isAdmin) && $booking['status'] === 'cancellation_requested') {
         $refundAmount = (float) post_str('refund_amount');
         $note = post_str('note');
-        db()->prepare("UPDATE bookings SET status = 'withdrawn', refund_amount = :amt WHERE id = :id")
-            ->execute(['amt' => $refundAmount, 'id' => $id]);
         $historyNote = "Caparra restituita: " . number_format($refundAmount, 2, ',', '.') . " €.";
         if ($note !== '') {
             $historyNote .= " Note: " . $note;
         }
-        booking_add_history($id, 'withdrawn', $historyNote, $uid);
+        $bookings->updateStatus($id, 'withdrawn', $historyNote, $uid);
         set_flash('success', 'Rimborso processato e disdetta completata.');
         redirect($bookingUrl);
     }

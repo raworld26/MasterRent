@@ -26,6 +26,7 @@ DEFINE("SQUARE", 1);
 DEFINE("CURL", 2);
 DEFINE('DEBUG', "DEBUG");
 
+#[AllowDynamicProperties]
 Class Template {
 	var
  		$template_file,
@@ -485,7 +486,7 @@ Class Template {
 			for($i=0;$i<count($finalContent[0]);$i++){
 				$currentParsedContentName = $finalContent[0][$i];
 				$currentParsedContentValue = $finalContent[1][$i];
-				$buffer = preg_replace("~{$this->escaped_tags['open']}$currentParsedContentName{$this->escaped_tags['close']}~Us",$currentParsedContentValue,$buffer,1);
+				$buffer = preg_replace("~{$this->escaped_tags['open']}$currentParsedContentName{$this->escaped_tags['close']}~Us",(string) $currentParsedContentValue,$buffer,1);
 			}
 		} 
 		
@@ -1012,6 +1013,7 @@ Class Template {
 	
 } 
 
+#[AllowDynamicProperties]
 Class Cache{
 	
 	var $caching,
@@ -1128,6 +1130,7 @@ Class Cache{
    }
 }
 
+#[AllowDynamicProperties]
 Class TagLibrary {
 	    
 	var $selectors;
@@ -1149,6 +1152,7 @@ Class TagLibrary {
 	
 }
 
+#[AllowDynamicProperties]
 Class ForeachCode {
 	var $foreachCodeArray,
 		$placeholderArray,
@@ -1566,6 +1570,7 @@ Class ForeachCode {
 
 
 
+#[AllowDynamicProperties]
 Class Skin extends Template {
 	
 	var 
@@ -1731,6 +1736,7 @@ Class Skin extends Template {
 	
 }
 
+#[AllowDynamicProperties]
 Class Skinlet extends Template {
 	
 	function __construct($template) {

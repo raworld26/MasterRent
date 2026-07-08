@@ -26,7 +26,7 @@ $html .= '<thead><tr>'
 foreach ($users as $u) {
     $statusClass = match ($u['status']) {
         'active'    => 'badge-success',
-        'suspended' => 'badge-warning',
+        'disabled'  => 'badge-warning',
         default     => 'badge-muted',
     };
 

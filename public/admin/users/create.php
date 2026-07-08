@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($email === '')     $errors[] = 'L\'email è obbligatoria.';
     if ($firstName === '') $errors[] = 'Il nome è obbligatorio.';
     if ($lastName === '')  $errors[] = 'Il cognome è obbligatorio.';
-    if (!in_array($status, ['active', 'suspended'], true)) {
+    if (!in_array($status, ['active', 'disabled'], true)) {
         $errors[] = 'Stato non valido.';
     }
 
@@ -151,7 +151,7 @@ $html .= '<label for="status">Stato</label>';
 $html .= '<select id="status" name="status">';
 $html .= select_options([
     ['id' => 'active',    'name' => 'Attivo'],
-    ['id' => 'suspended', 'name' => 'Sospeso'],
+    ['id' => 'disabled', 'name' => 'Sospeso'],
 ], $v['status']);
 $html .= '</select>';
 $html .= '</div>';
