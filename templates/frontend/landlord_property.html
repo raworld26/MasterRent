@@ -1,0 +1,74 @@
+<nav class="breadcrumb"><a href="<[back_url]>">← I miei annunci</a></nav>
+
+<section class="dashboard-head">
+    <div>
+        <h1><[prop_title]></h1>
+        <p class="muted"><[prop_neighborhood]> · <[prop_address]></p>
+    </div>
+    <div class="head-actions">
+        <a class="button button-ghost" href="<[edit_url]>">Modifica</a>
+        <form method="post" action="<[delete_url]>" class="inline-form" onsubmit="return confirm('Eliminare questo annuncio e tutte le sue stanze?')">
+            <[csrf_delete]>
+            <input type="hidden" name="action" value="delete_property">
+            <button type="submit" class="button button-danger">Elimina</button>
+        </form>
+    </div>
+</section>
+
+<!-- Info immobile -->
+<div class="panel mng-info">
+    <div class="spec-grid">
+        <div><span class="spec-k">Riscaldamento</span><span class="spec-v"><[heating]></span></div>
+        <div><span class="spec-k">Ascensore</span><span class="spec-v"><[elevator]></span></div>
+        <div><span class="spec-k">Stanze totali</span><span class="spec-v"><[total_rooms]></span></div>
+        <div><span class="spec-k">Stanze pubblicate</span><span class="spec-v"><[pub_rooms]></span></div>
+    </div>
+    <[if!empty prop_desc]><p class="mng-desc"><[prop_desc]></p><[/if!empty]>
+</div>
+
+<!-- Stanze -->
+<section class="mng-section">
+    <div class="section-head">
+        <h2>Stanze</h2>
+        <a class="button" href="<[add_room_url]>">+ Aggiungi stanza</a>
+    </div>
+    <[if!empty rooms_html]><[rooms_html]><[/if!empty]>
+    <[ifempty rooms_html]><p class="muted">Nessuna stanza pubblicata. <a href="<[add_room_url]>">Aggiungi la prima stanza</a>.</p><[/ifempty]>
+</section>
+
+<!-- Immagini -->
+<section class="mng-section">
+    <div class="section-head">
+        <h2>Immagini</h2>
+    </div>
+    <form class="upload-form" method="post" action="<[upload_url]>" enctype="multipart/form-data">
+        <[csrf_upload]>
+        <label class="upload-drop">
+            <input type="file" name="image" accept="image/jpeg,image/png,image/webp" required>
+            <span>Seleziona un'immagine (max 4 MB)</span>
+        </label>
+        <label class="field inline-field"><span class="field-label">Didascalia</span>
+            <input type="text" name="caption" maxlength="200" placeholder="Facoltativo"></label>
+        <label class="field check-field"><input type="checkbox" name="is_cover" value="1"> Imposta come copertina</label>
+        <button class="button" type="submit">Carica</button>
+    </form>
+    <[if!empty images_html]><div class="mng-images"><[images_html]></div><[/if!empty]>
+    <[ifempty images_html]><p class="muted">Nessuna immagine caricata.</p><[/ifempty]>
+</section>
+
+<!-- Distanze dai poli -->
+<section class="mng-section">
+    <div class="section-head">
+        <h2>Distanze dai poli universitari</h2>
+    </div>
+    <p class="muted">In fase 2 le distanze sono calcolate automaticamente dalla mappa usando l'indirizzo dell'annuncio.</p>
+    <form class="pole-form" method="post" action="<[pole_action_url]>">
+        <[csrf_pole]>
+        <input type="hidden" name="action" value="refresh_distances">
+        <div class="pole-form-row">
+            <button class="button" type="submit">Ricalcola da indirizzo</button>
+        </div>
+    </form>
+    <[if!empty poles_html]><[poles_html]><[/if!empty]>
+    <[ifempty poles_html]><p class="muted">Nessuna distanza impostata.</p><[/ifempty]>
+</section>

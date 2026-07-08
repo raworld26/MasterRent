@@ -1,0 +1,46 @@
+<nav class="breadcrumb"><a href="<[back_url]>">← Torna alla richiesta</a></nav>
+
+<[stepper]>
+
+<div class="deposit-page">
+    <div class="panel deposit-checkout">
+        <span class="sim-badge">Pagamento simulato · demo</span>
+        <h1>Versa la caparra</h1>
+        <p class="muted">Confermi la prenotazione di <strong><[room_title]></strong> — <[property_title]>, <[neighborhood]>.</p>
+
+        <div class="deposit-recap">
+            <div class="deposit-recap-row">
+                <span>Affitto mensile</span>
+                <span><[price]></span>
+            </div>
+            <div class="deposit-recap-row deposit-recap-total">
+                <span>Caparra dovuta <small>(1 mensilità)</small></span>
+                <span><[deposit_amount]></span>
+            </div>
+        </div>
+
+        <form method="post" action="<[action_url]>" class="form deposit-form" data-validate>
+            <[csrf_field]>
+            <fieldset class="fake-card" aria-describedby="sim-note">
+                <legend>Dati carta (fittizi)</legend>
+                <label class="field"><span class="field-label">Intestatario</span>
+                    <input type="text" name="holder" value="Mario Rossi" autocomplete="off">
+                </label>
+                <label class="field"><span class="field-label">Numero carta</span>
+                    <input type="text" name="card" inputmode="numeric" value="4242 4242 4242 4242" autocomplete="off">
+                </label>
+                <div class="deposit-card-row">
+                    <label class="field"><span class="field-label">Scadenza</span>
+                        <input type="text" name="exp" value="12/29" autocomplete="off">
+                    </label>
+                    <label class="field"><span class="field-label">CVC</span>
+                        <input type="text" name="cvc" value="123" autocomplete="off">
+                    </label>
+                </div>
+            </fieldset>
+            <p id="sim-note" class="muted">Questa è una simulazione: non inserire dati reali, nessun importo verrà addebitato e nessun dato di pagamento viene salvato.</p>
+            <button class="button button-block" type="submit">Paga <[deposit_amount]> e prenota</button>
+            <a class="button button-ghost button-block" href="<[back_url]>">Annulla</a>
+        </form>
+    </div>
+</div>

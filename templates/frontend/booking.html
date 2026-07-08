@@ -1,0 +1,111 @@
+<nav class="breadcrumb"><a href="<[back_url]>">← <[back_label]></a></nav>
+
+<[stepper]>
+
+<div class="booking-detail">
+    <div class="booking-thread-col">
+        <div class="panel booking-summary">
+            <div>
+                <h1><[room_title]></h1>
+                <p class="muted"><[property_title]> · <[neighborhood]></p>
+            </div>
+            <[status_badge]>
+        </div>
+
+        <div class="panel">
+            <h2>Conversazione</h2>
+            <[thread]>
+            <[if!empty no_messages]><p class="muted">Ancora nessun messaggio.</p><[/if!empty]>
+
+            <[if!empty show_message_form]>
+            <form method="post" action="<[action_url]>" class="form msg-form" data-validate>
+                <[csrf_field]>
+                <input type="hidden" name="action" value="message">
+                <textarea name="body" rows="3" required minlength="2" placeholder="Scrivi un messaggio…"></textarea>
+                <button class="button" type="submit">Invia messaggio</button>
+            </form>
+            <[/if!empty]>
+        </div>
+    </div>
+
+    <aside class="booking-side">
+        <div class="panel">
+            <h3>Dettagli richiesta</h3>
+            <p><span class="muted">Studente:</span> <strong><[student_name]></strong></p>
+            <p><span class="muted">Proprietario:</span> <strong><[landlord_name]></strong></p>
+            <p><span class="muted">Affitto:</span> <strong><[price]> /mese</strong></p>
+            <p><span class="muted">Caparra (1 mensilità):</span> <strong><[deposit_amount]></strong></p>
+            <[if!empty move_in]><p><span class="muted">Ingresso desiderato:</span> <[move_in]></p><[/if!empty]>
+            <p><a href="<[room_url]>">Vedi annuncio →</a></p>
+        </div>
+
+        <[if!empty show_decision]>
+        <div class="panel">
+            <h3>Decisione</h3>
+            <p class="muted">Dopo la visita, approva o rifiuta la richiesta.</p>
+            <form method="post" action="<[action_url]>" class="form decision-form">
+                <[csrf_field]>
+                <input type="hidden" name="action" value="approve">
+                <button class="button button-block" type="submit">Approva richiesta</button>
+            </form>
+            <form method="post" action="<[action_url]>" class="form decision-form" onsubmit="return confirm('Rifiutare la richiesta?');">
+                <[csrf_field]>
+                <input type="hidden" name="action" value="reject">
+                <label class="field"><span class="field-label">Motivo (facoltativo)</span>
+                    <input type="text" name="note" placeholder="es. Stanza già promessa">
+                </label>
+                <button class="button button-danger button-block" type="submit">Rifiuta richiesta</button>
+            </form>
+        </div>
+        <[/if!empty]>
+
+        <[if!empty show_pay]>
+        <div class="panel deposit-panel">
+            <h3>Caparra</h3>
+            <p class="muted">La tua richiesta è stata approvata. Versa la caparra di <strong><[deposit_amount]></strong> per prenotare la stanza.</p>
+            <a class="button button-block" href="<[deposit_url]>">Paga la caparra</a>
+            <p class="muted booking-note">Pagamento simulato: non verrà addebitato nulla.</p>
+        </div>
+        <[/if!empty]>
+
+        <[if!empty show_receipt]>
+        <div class="panel deposit-panel deposit-panel-paid">
+            <h3>Caparra versata ✓</h3>
+            <p><span class="muted">Importo:</span> <strong><[deposit_amount]></strong></p>
+            <[receipt_rows]>
+            <p class="muted booking-note">Ricevuta dimostrativa (pagamento simulato).</p>
+        </div>
+        <[/if!empty]>
+
+        <[if!empty show_withdraw]>
+        <form method="post" action="<[action_url]>" onsubmit="return confirm('Vuoi ritirare la richiesta?');">
+            <[csrf_field]>
+            <input type="hidden" name="action" value="withdraw">
+            <button class="button button-ghost button-block" type="submit">Ritira richiesta</button>
+        </form>
+        <[/if!empty]>
+
+        <[if!empty show_refund]>
+        <form method="post" action="<[action_url]>" class="panel">
+            <h3>Restituzione Caparra</h3>
+            <p class="muted">Elabora la disdetta ed emetti un rimborso della caparra (totale o parziale).</p>
+            <[csrf_field]>
+            <input type="hidden" name="action" value="refund">
+            <div class="form-group">
+                <label>Importo rimborso (&euro;)</label>
+                <input type="number" name="refund_amount" step="0.01" min="0" max="10000" placeholder="0.00" required>
+            </div>
+            <div class="form-group">
+                <label>Note aggiuntive (opzionale)</label>
+                <input type="text" name="note" placeholder="Motivazione o trattenute...">
+            </div>
+            <button class="button-primary button-block" type="submit">Conferma Disdetta</button>
+        </form>
+        <[/if!empty]>
+
+        <div class="panel">
+            <h3>Cronologia</h3>
+            <[history]>
+        </div>
+    </aside>
+</div>

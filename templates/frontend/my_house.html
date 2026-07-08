@@ -1,0 +1,49 @@
+<nav class="breadcrumb"><a href="<[back_url]>">&larr; Area studente</a></nav>
+
+<section class="dashboard-head">
+    <div>
+        <span class="section-eyebrow">Area studente</span>
+        <h1>La mia casa</h1>
+        <p class="muted">La stanza o casa attualmente associata al tuo account.</p>
+    </div>
+    <div class="head-actions">
+        <a class="button button-ghost" href="<[booking_url]>">Apri conversazione</a>
+        <a class="button" href="<[room_url]>">Vedi annuncio</a>
+    </div>
+</section>
+
+<div class="room-detail my-house-detail">
+    <div class="room-detail-main">
+        <[gallery]>
+
+        <section class="panel">
+            <div class="booking-summary">
+                <div>
+                    <span class="room-type-pill"><[room_type]></span>
+                    <h2><[property_title]></h2>
+                    <p class="muted"><[room_name]> &middot; <[address]> &middot; <[neighborhood]></p>
+                </div>
+                <[status_badge]>
+            </div>
+            <ul class="spec-grid">
+                <li><span class="spec-k">Tipologia</span><span class="spec-v"><[room_type]></span></li>
+                <li><span class="spec-k">Affitto</span><span class="spec-v"><[price]> /mese</span></li>
+                <li><span class="spec-k">Stato stanza</span><span class="spec-v"><[room_status]></span></li>
+                <li><span class="spec-k">Ingresso</span><span class="spec-v"><[move_in]></span></li>
+                <li><span class="spec-k">Caparra versata</span><span class="spec-v"><[deposit_paid]></span></li>
+                <li><span class="spec-k">Riferimento</span><span class="spec-v"><[deposit_reference]></span></li>
+            </ul>
+        </section>
+    </div>
+
+    <aside class="room-detail-side">
+        <div class="panel landlord-box">
+            <h3>Proprietario</h3>
+            <p><strong><[landlord_name]></strong></p>
+            <p class="muted"><[landlord_email]></p>
+            <p class="muted"><[landlord_phone]></p>
+        </div>
+
+        <[cancellation_panel]>
+    </aside>
+</div>

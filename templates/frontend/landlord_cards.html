@@ -1,0 +1,17 @@
+<div class="landlord-grid">
+    <[foreach]>
+    <article class="panel landlord-card">
+        <a class="landlord-card-media" href="<[mng_url]>">
+            <img src="<[cover]>" alt="<[title]>" loading="lazy">
+        </a>
+        <div class="landlord-card-body">
+            <h3><[title]></h3>
+            <p class="muted"><[neigh]> · <[rooms]> stanze</p>
+            <div class="actions-group">
+                <a class="button button-small" href="<[mng_url]>">Gestisci</a>
+                <a class="button button-small button-ghost" href="<[edit_url]>">Modifica</a>
+            </div>
+        </div>
+    </article>
+    <[/foreach]>
+</div>

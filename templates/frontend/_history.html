@@ -1,0 +1,12 @@
+<ul class="timeline">
+    <[foreach]>
+    <li class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div>
+            <[hist_status]>
+            <[if!empty hist_note]><span class="timeline-note"><[hist_note]></span><[/if!empty]>
+            <time class="timeline-time"><[hist_time]></time>
+        </div>
+    </li>
+    <[/foreach]>
+</ul>

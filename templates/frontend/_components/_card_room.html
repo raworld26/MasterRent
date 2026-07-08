@@ -1,0 +1,34 @@
+<article class="room-card" data-search="<[card_search]>" data-price="<[card_price_num]>" data-distance="<[card_distance_num]>" data-created="<[card_created_ts]>" data-type="<[card_type_raw]>" data-rating="<[card_rating_num]>">
+    <div class="room-card-media is-loading">
+        <a class="room-card-link" href="<[card_url]>" aria-label="Apri <[card_title]>" tabindex="-1">
+            <img src="<[card_cover]>" alt="Foto di <[card_title]>, <[card_neigh]>" decoding="async" loading="lazy" data-img-reveal onerror="this.onerror=null;this.src='<[card_fallback_cover]>';">
+        </a>
+        <span class="card-badges"><[card_new_badge]><[card_status_chip]></span>
+        <[card_rating_pill]>
+        <button class="fav-btn <[card_fav_class]>" type="button" data-fav data-room-id="<[card_id]>" aria-pressed="<[card_fav_pressed]>" aria-label="Salva <[card_title]> nei preferiti" title="Salva nei preferiti">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+        </button>
+    </div>
+    <div class="room-card-body">
+        <div class="room-card-primary">
+            <span class="room-card-price"><[card_price]> <small>/mese</small></span>
+            <span class="room-card-type-label"><[card_type]></span>
+        </div>
+        <a class="room-card-title" href="<[card_url]>"><[card_property]></a>
+        <p class="room-card-addr" style="margin-bottom: 2px;"><[card_title]></p>
+        <p class="room-card-addr" style="font-size: 0.85em; opacity: 0.8;"><[card_addr]></p>
+        <div class="room-card-meta">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.3 7-12a7 7 0 1 0-14 0c0 6.7 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+            <span><[card_neigh]></span>
+            <span class="dot" aria-hidden="true">·</span>
+            <span><[card_distance]></span>
+        </div>
+        <div class="room-card-tags">
+            <[card_expenses_tag]>
+        </div>
+        <div class="room-card-foot">
+            <a class="button button-ghost button-small" href="<[card_url]>">Dettagli</a>
+            <a class="button button-small" href="<[card_url]>">Prenota visita</a>
+        </div>
+    </div>
+</article>

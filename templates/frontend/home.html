@@ -1,0 +1,124 @@
+<section class="hero" aria-labelledby="hero-title">
+    <span class="hero-eyebrow">Affitti universitari a L'Aquila · UNIVAQ</span>
+    <h1 id="hero-title">La tua stanza, a due passi dal <em>tuo polo</em></h1>
+    <p class="hero-lead">Stanze e posti letto per studenti UNIVAQ: confronta zona, prezzo e distanza dalle aule, prenota la visita e blocca la stanza con una caparra simulata pari a una mensilità.</p>
+
+    <form class="hero-search" action="<[search_url]>" method="get" role="search" aria-label="Cerca una stanza a L'Aquila">
+        <div class="hero-search-grid">
+            <label class="hero-field">
+                <span class="field-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M12 21s7-5.3 7-12a7 7 0 1 0-14 0c0 6.7 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+                </span>
+                <span class="field-copy"><small>Quartiere</small><select name="neighborhood_id" aria-label="Quartiere" data-custom-select data-select-label="Quartiere"><[neighborhood_options]></select></span>
+            </label>
+            <label class="hero-field">
+                <span class="field-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8l10-5Z"/><path d="M6 10v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>
+                </span>
+                <span class="field-copy"><small>Polo UNIVAQ</small><select name="pole_id" aria-label="Polo universitario" data-custom-select data-select-label="Polo universitario"><[pole_options]></select></span>
+            </label>
+            <label class="hero-field">
+                <span class="field-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M15 5a6 6 0 1 0 0 14M4 10h10M4 14h10"/></svg>
+                </span>
+                <span class="field-copy"><small>Budget max</small><input type="number" name="price_max" min="0" step="10" placeholder="Qualsiasi" aria-label="Prezzo massimo mensile"></span>
+            </label>
+            <button type="submit" class="button hero-submit">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+                Cerca
+            </button>
+        </div>
+    </form>
+
+    <div class="hero-metrics" aria-label="Numeri della piattaforma">
+        <span><strong><[room_count]></strong> stanze disponibili</span>
+        <span><strong><[neighborhood_count]></strong> quartieri mappati</span>
+    </div>
+</section>
+
+<section class="home-section" aria-labelledby="poles-title">
+    <div class="section-head">
+        <div>
+            <span class="section-eyebrow">Studia vicino</span>
+            <h2 id="poles-title">Vicino ai poli didattici</h2>
+            <p class="muted">Scegli il tuo polo UNIVAQ e vedi subito le stanze più comode per arrivare a lezione.</p>
+        </div>
+    </div>
+    <div class="pole-chips"><[pole_chips]></div>
+</section>
+
+<section class="home-section featured" aria-labelledby="featured-title">
+    <div class="section-head">
+        <div>
+            <span class="section-eyebrow">Ultimi arrivi</span>
+            <h2 id="featured-title">Stanze in evidenza a L'Aquila</h2>
+            <p class="muted">Le disponibilità più recenti, con prezzo, via e distanza dai poli subito leggibili.</p>
+        </div>
+        <a class="section-link" href="<[search_url]>">Vedi tutte le stanze →</a>
+    </div>
+    <[featured_rooms]>
+</section>
+
+<section class="home-section" aria-labelledby="neigh-title">
+    <div class="section-head">
+        <div>
+            <span class="section-eyebrow">La città</span>
+            <h2 id="neigh-title">Esplora per quartiere</h2>
+            <p class="muted">Dal centro storico a Coppito: scegli la zona giusta per il tuo corso.</p>
+        </div>
+    </div>
+    <div class="neigh-grid"><[neighborhood_cards]></div>
+</section>
+
+<section class="home-section" id="come-funziona" aria-labelledby="steps-title">
+    <div class="section-head">
+        <div>
+            <span class="section-eyebrow">Semplice davvero</span>
+            <h2 id="steps-title">Come funziona</h2>
+            <p class="muted">Dalla ricerca alla stanza prenotata in tre passaggi, senza costi nascosti.</p>
+        </div>
+    </div>
+    <div class="steps-grid">
+        <article class="step">
+            <span class="step-num" aria-hidden="true">1</span>
+            <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="18" rx="2"/></svg></span>
+            <h3>Prenota la visita</h3>
+            <p>Trova la stanza giusta, invia la richiesta al proprietario e concorda la visita nella chat della piattaforma.</p>
+        </article>
+        <article class="step">
+            <span class="step-num" aria-hidden="true">2</span>
+            <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg></span>
+            <h3>Il proprietario approva</h3>
+            <p>Dopo la visita il proprietario approva la tua richiesta: la stanza è pronta per essere bloccata.</p>
+        </article>
+        <article class="step">
+            <span class="step-num" aria-hidden="true">3</span>
+            <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+            <h3>Paga la caparra</h3>
+            <p>Versi la caparra — qui simulata, pari a una mensilità — e la stanza risulta prenotata a tuo nome.</p>
+        </article>
+    </div>
+</section>
+
+<[if!empty latest_reviews]>
+<section class="home-section" aria-labelledby="reviews-title">
+    <div class="section-head">
+        <div>
+            <span class="section-eyebrow">Parola agli studenti</span>
+            <h2 id="reviews-title">Ultime recensioni</h2>
+            <p class="muted">Esperienze vere di chi ha già trovato casa con MasterRent.</p>
+        </div>
+    </div>
+    <div class="review-list"><[latest_reviews]></div>
+</section>
+<[/if!empty]>
+
+<section class="home-section" aria-label="Per i proprietari">
+    <div class="cta-band">
+        <div>
+            <h2>Hai una stanza da affittare a studenti?</h2>
+            <p>Pubblica gratuitamente il tuo annuncio, gestisci foto e richieste di visita da un'unica area riservata.</p>
+        </div>
+        <a class="button" href="<[register_url]>">Pubblica il tuo annuncio</a>
+    </div>
+</section>

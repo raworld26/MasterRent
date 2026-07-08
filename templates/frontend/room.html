@@ -1,0 +1,211 @@
+<nav class="breadcrumb"><a href="<[search_url]>">← Tutte le stanze</a></nav>
+
+<[unavailable_banner]>
+
+<div class="room-detail">
+    <div class="room-detail-main">
+        <[gallery]>
+
+        <div class="room-headline">
+            <div>
+                <span class="room-type-pill"><[room_type]></span> <[room_status_pill]>
+                <h1><[room_title]></h1>
+                <p class="room-loc"><[address]> · <[neighborhood_name]> · <[property_title]></p>
+                <div class="room-rating"><[rating_stars]> <span class="muted"><[rating_text]></span></div>
+            </div>
+            <button class="fav-btn fav-btn-lg <[fav_class]>" type="button" data-fav data-room-id="<[room_id]>" aria-pressed="<[fav_pressed]>" aria-label="Salva nei preferiti" title="Salva nei preferiti">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+            </button>
+        </div>
+
+        <nav class="room-anchors" aria-label="Sezioni dell'annuncio">
+            <a href="#descrizione">Descrizione</a>
+            <a href="#servizi">Servizi</a>
+            <a href="#quartiere">Quartiere</a>
+            <a href="#distanze">Distanze</a>
+            <a href="#recensioni">Recensioni</a>
+        </nav>
+
+        <section class="room-section" id="descrizione">
+            <h2>Descrizione</h2>
+            <p class="room-description"><[property_description]></p>
+        </section>
+
+        <section class="room-section" id="caratteristiche">
+            <h2>Caratteristiche</h2>
+            <ul class="spec-grid">
+                <li><span class="spec-k">Tipologia</span><span class="spec-v"><[room_type]></span></li>
+                <li><span class="spec-k">Superficie</span><span class="spec-v"><[room_sqm]></span></li>
+                <li><span class="spec-k">Contratto</span><span class="spec-v"><[contract_type]></span></li>
+                <li><span class="spec-k">Caparra</span><span class="spec-v"><[deposit]></span></li>
+                <li><span class="spec-k">Spese</span><span class="spec-v"><[expenses]></span></li>
+                <li><span class="spec-k">Riscaldamento</span><span class="spec-v"><[heating]></span></li>
+                <li><span class="spec-k">Ascensore</span><span class="spec-v"><[elevator]></span></li>
+            </ul>
+        </section>
+
+        <[if!empty amenities]>
+        <section class="room-section" id="servizi">
+            <h2>Servizi e accessori</h2>
+            <[amenities]>
+        </section>
+        <[/if!empty]>
+
+        <section class="room-section" id="distanze">
+            <h2>Distanze universitarie stimate</h2>
+            <div class="distances-grid">
+                <[poles]>
+            </div>
+            <p class="muted text-sm mt-1">
+                Le tempistiche sono stime indicative e possono variare in base alla fermata, agli orari dei bus e alla posizione precisa dell’immobile.
+            </p>
+        </section>
+
+        <section class="room-section" id="quartiere">
+            <h2>Dove si trova</h2>
+            <p class="muted map-caption">Zona: <strong><[map_zone]></strong> · <[address]></p>
+            <div class="zone-map">
+                <iframe title="Mappa della zona <[map_zone]>" src="<[map_embed]>" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <p class="map-actions"><a class="button button-ghost button-small" href="<[map_link]>" target="_blank" rel="noopener">Apri Mappa ↗</a></p>
+        </section>
+
+        <section class="room-section" id="recensioni">
+            <h2>Recensioni</h2>
+            <[reviews]>
+            <[if!empty no_reviews]><p class="muted">Ancora nessuna recensione per questa stanza.</p><[/if!empty]>
+            <[if!empty review_note]><p class="muted text-sm"><[review_note]></p><[/if!empty]>
+
+            <[if!empty show_review_form]>
+            <form class="review-form panel form" method="post" action="<[room_action]>" data-validate>
+                <[review_csrf]>
+                <input type="hidden" name="action" value="review">
+                <h3>Lascia una recensione</h3>
+                <p class="muted">Hai alloggiato qui: racconta la tua esperienza.</p>
+                <label class="field"><span class="field-label">Voto</span>
+                    <select name="rating" required>
+                        <option value="5">★★★★★ Eccellente</option>
+                        <option value="4">★★★★ Buono</option>
+                        <option value="3">★★★ Discreto</option>
+                        <option value="2">★★ Scarso</option>
+                        <option value="1">★ Pessimo</option>
+                    </select>
+                </label>
+                <label class="field"><span class="field-label">Titolo</span>
+                    <input type="text" name="title" maxlength="150" required>
+                </label>
+                <label class="field"><span class="field-label">Commento</span>
+                    <textarea name="body" rows="4" required></textarea>
+                </label>
+                <button class="button" type="submit">Pubblica recensione</button>
+            </form>
+            <[/if!empty]>
+        </section>
+    </div>
+
+    <aside class="room-detail-side">
+        <div class="panel booking-box">
+            <div class="booking-price-row">
+                <span class="booking-price"><[price]><small> /mese</small></span>
+                <[room_status_pill]>
+            </div>
+            <[if!empty expenses_note]><p class="muted booking-expenses"><[expenses_note]></p><[/if!empty]>
+
+            <div class="deposit-callout">
+                <span class="deposit-callout-k">
+                    Caparra (1 mensilità)
+                    <span class="sim-tag">Pagamento simulato · demo</span>
+                </span>
+                <span class="deposit-callout-v"><[deposit_amount]></span>
+            </div>
+
+            <[if!empty show_book_form]>
+            <form method="post" action="<[room_action]>" class="form booking-form" data-validate>
+                <[book_csrf]>
+                <input type="hidden" name="action" value="book">
+                <label class="field"><span class="field-label">Quando vorresti entrare?</span>
+                    <input type="date" name="move_in_date">
+                </label>
+                <label class="field"><span class="field-label">Messaggio al proprietario</span>
+                    <textarea name="message" rows="4" placeholder="Ciao, vorrei prenotare una visita per questa stanza…" required minlength="10"></textarea>
+                </label>
+                <button class="button button-block" type="submit">Prenota una visita</button>
+                <p class="muted booking-note">Gratis e senza impegno: paghi la caparra (simulata) solo dopo la visita e l'approvazione del proprietario.</p>
+            </form>
+            <[/if!empty]>
+
+            <[if!empty show_visit_pending]>
+            <div class="booking-state booking-state-pending">
+                <p class="booking-state-title">In attesa di approvazione</p>
+                <p class="muted">Hai richiesto una visita. Il proprietario risponderà a breve.</p>
+                <a class="button button-ghost button-block" href="<[booking_url]>">Apri la richiesta</a>
+            </div>
+            <[/if!empty]>
+
+            <[if!empty show_pay_deposit]>
+            <div class="booking-state booking-state-approved">
+                <p class="booking-state-title">✓ Richiesta approvata</p>
+                <p class="muted">Versa la caparra di <strong><[deposit_amount]></strong> (1 mensilità) per prenotare la stanza.</p>
+                <a class="button button-block" href="<[deposit_url]>">Paga la caparra</a>
+                <p class="muted booking-note">Pagamento simulato: non verrà addebitato nulla.</p>
+            </div>
+            <[/if!empty]>
+
+            <[if!empty show_reserved_by_me]>
+            <div class="booking-state booking-state-done">
+                <p class="booking-state-title">🎉 Stanza prenotata</p>
+                <p class="muted">Hai versato la caparra: questa stanza è tua. Trovi la ricevuta nella tua richiesta.</p>
+                <a class="button button-block" href="<[booking_url]>">Vedi la richiesta</a>
+            </div>
+            <[/if!empty]>
+
+            <[if!empty show_cancellation_requested]>
+            <div class="booking-state booking-state-pending">
+                <p class="booking-state-title">Disdetta richiesta</p>
+                <p class="muted">Hai chiesto al proprietario di concordare l'uscita. La stanza resta associata a te finche non viene resa disponibile.</p>
+                <a class="button button-block" href="<[booking_url]>">Apri la conversazione</a>
+            </div>
+            <[/if!empty]>
+
+            <[if!empty show_rejected]>
+            <div class="booking-state booking-state-rejected">
+                <p class="booking-state-title">Richiesta rifiutata</p>
+                <p class="muted">Il proprietario non ha accettato la tua richiesta per questa stanza.</p>
+                <a class="button button-ghost button-block" href="<[search_url]>">Cerca altre stanze</a>
+            </div>
+            <[/if!empty]>
+
+            <[if!empty show_unavailable]>
+            <div class="booking-state booking-state-unavailable">
+                <p class="booking-state-title">Non disponibile</p>
+                <p class="muted">Questa stanza è stata prenotata e non è al momento prenotabile.</p>
+                <a class="button button-ghost button-block" href="<[search_url]>">Vedi stanze disponibili</a>
+            </div>
+            <[/if!empty]>
+
+            <[if!empty show_book_login]>
+            <div class="booking-login">
+                <p class="muted">Accedi come studente per prenotare una visita e salvare i preferiti.</p>
+                <a class="button button-block" href="<[login_url]>">Accedi</a>
+                <a class="button button-ghost button-block" href="<[register_url]>">Registrati</a>
+            </div>
+            <[/if!empty]>
+
+            <[if!empty show_owner_note]>
+            <p class="muted">Questo è uno dei tuoi annunci. Gestiscilo dall'area proprietario.</p>
+            <[/if!empty]>
+        </div>
+
+        <div class="panel landlord-box">
+            <h3>Il proprietario</h3>
+            <div class="landlord-row">
+                <span class="landlord-avatar" aria-hidden="true"><[landlord_initial]></span>
+                <div>
+                    <p class="landlord-name"><[landlord_name]></p>
+                    <p class="muted">Host su MasterRent</p>
+                </div>
+            </div>
+            <p class="muted landlord-note">Risponde in genere entro qualche ora. Contattalo per fissare una visita.</p>
+        </div>
+    </aside>
+</div>

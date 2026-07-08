@@ -1,0 +1,30 @@
+<section class="auth-wrap auth-split">
+    <div class="auth-aside">
+        <span class="auth-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M5 18 16 8l11 10-2.8 3L16 13.6 7.8 21 5 18Z"/><path d="M10 20 16 14.8 22 20v7h-4v-5h-4v5h-4v-7Z"/></svg>
+        </span>
+        <h1>Rientra nella tua ricerca</h1>
+        <p>Preferiti, richieste e messaggi restano ordinati in un'area semplice da consultare.</p>
+    </div>
+    <div class="panel auth-card">
+        <h2>Accedi</h2>
+        <p class="muted">Bentornato su <strong><[app_name]></strong>.</p>
+
+        <[error]>
+
+        <form method="post" action="<[login_action]>" class="form" data-validate novalidate>
+            <[csrf_field]>
+            <label class="field">
+                <span class="field-label">Email</span>
+                <input type="email" name="email" value="<[email]>" required autocomplete="email">
+            </label>
+            <label class="field">
+                <span class="field-label">Password</span>
+                <input type="password" name="password" required minlength="8" autocomplete="current-password">
+            </label>
+            <button class="button button-block" type="submit">Entra</button>
+        </form>
+
+        <p class="auth-alt muted">Non hai un account? <a href="<[register_url]>">Registrati</a></p>
+    </div>
+</section>

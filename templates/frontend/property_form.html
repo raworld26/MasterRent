@@ -1,0 +1,43 @@
+<nav class="breadcrumb"><a href="<[back_url]>">← <[back_label]></a></nav>
+<section class="dashboard-head"><div><h1><[form_title]></h1></div></section>
+
+<form class="panel form form-wide" method="post" action="<[action_url]>" enctype="multipart/form-data" data-validate novalidate>
+    <[csrf_field]>
+    <[error]>
+    <label class="field"><span class="field-label">Titolo annuncio</span>
+        <input type="text" name="title" value="<[title]>" required maxlength="150" placeholder="Es. Stanza luminosa vicino al Polo di Coppito"></label>
+    <label class="field"><span class="field-label">Quartiere</span>
+        <select name="neighborhood_id" required><[neighborhood_options]></select></label>
+    <div class="form-grid">
+        <label class="field"><span class="field-label">Indirizzo</span>
+            <input type="text" name="address" value="<[address]>" required maxlength="190"></label>
+        <label class="field"><span class="field-label">Civico</span>
+            <input type="text" name="house_number" value="<[house_number]>" maxlength="20"></label>
+    </div>
+    <div class="form-grid">
+        <label class="field"><span class="field-label">CAP</span>
+            <input type="text" name="postal_code" value="<[postal_code]>" maxlength="10"></label>
+        <label class="field"><span class="field-label">Numero totale di stanze</span>
+            <input type="number" name="total_rooms" value="<[total_rooms]>" min="1" max="20"></label>
+    </div>
+    <[initial_price_field]>
+    <label class="field"><span class="field-label">Descrizione</span>
+        <textarea name="description" rows="5" placeholder="Descrivi l'immobile, la zona, i servizi…"><[description]></textarea></label>
+    <div class="form-grid">
+        <label class="field"><span class="field-label">Riscaldamento</span>
+            <select name="heating_type"><[heating_options]></select></label>
+        <label class="field check-field check-field-center">
+            <input type="checkbox" name="has_elevator" value="1" <[elevator_checked]>> Ascensore presente</label>
+    </div>
+    <fieldset class="field form-upload-field">
+        <legend class="field-label">Foto dell'immobile</legend>
+        <label class="upload-drop upload-drop-wide">
+            <input type="file" name="images[]" accept="image/jpeg,image/png,image/webp" multiple>
+            <span>
+                <strong>Seleziona foto</strong>
+                <small>JPEG, PNG o WebP - max 4 MB ciascuna</small>
+            </span>
+        </label>
+    </fieldset>
+    <button class="button" type="submit"><[submit_label]></button>
+</form>

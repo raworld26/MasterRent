@@ -1,0 +1,34 @@
+<nav class="breadcrumb"><a href="<[back_url]>">← <[back_label]></a></nav>
+<section class="dashboard-head"><div><h1><[form_title]></h1></div></section>
+
+<form class="panel form form-wide" method="post" action="<[action_url]>" data-validate novalidate>
+    <[csrf_field]>
+    <[error]>
+    <label class="field"><span class="field-label">Nome stanza</span>
+        <input type="text" name="name" value="<[name]>" required maxlength="120" placeholder="Es. Camera singola lato giardino"></label>
+    <div class="form-grid">
+        <label class="field"><span class="field-label">Tipologia</span>
+            <select name="type" required><[type_options]></select></label>
+        <label class="field"><span class="field-label">Prezzo mensile (€)</span>
+            <input type="number" name="price_monthly" value="<[price_monthly]>" min="0" max="5000" step="0.01" required></label>
+    </div>
+    <div class="form-grid">
+        <label class="field"><span class="field-label">Mesi di cauzione</span>
+            <input type="number" name="deposit_months" value="<[deposit_months]>" min="0" max="6"></label>
+        <label class="field"><span class="field-label">Tipo contratto</span>
+            <select name="contract_type"><[contract_options]></select></label>
+    </div>
+    <div class="form-grid">
+        <label class="field check-field"><input type="checkbox" name="expenses_included" value="1" <[expenses_checked]>> Spese incluse</label>
+        <label class="field check-field"><input type="checkbox" name="is_available" value="1" <[available_checked]>> Disponibile</label>
+    </div>
+
+    <[if!empty amenities_html]>
+    <fieldset class="field">
+        <legend class="field-label">Servizi / Accessori</legend>
+        <div class="amenity-checks"><[amenities_html]></div>
+    </fieldset>
+    <[/if!empty]>
+
+    <button class="button" type="submit"><[submit_label]></button>
+</form>

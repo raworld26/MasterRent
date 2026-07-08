@@ -1,0 +1,158 @@
+<section class="search-head">
+    <div class="search-head-top">
+        <div class="search-head-copy">
+            <h1>Cerca la tua stanza a L'Aquila</h1>
+            <p class="muted">Filtri chiari e risultati confrontabili: zona, prezzo e distanza dai poli UNIVAQ sempre in vista.</p>
+        </div>
+        <button class="mobile-filter-toggle" type="button" aria-expanded="false" aria-controls="search-filter-form" data-filter-toggle>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+            <span>Filtri</span>
+        </button>
+    </div>
+
+    <form id="search-filter-form" class="filter-bar filter-panel" action="<[search_url]>" method="get" role="search" aria-label="Filtri annunci">
+        <div class="filter-field filter-grow">
+            <label for="q">Cerca</label>
+            <div class="input-shell">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+                <input id="q" type="search" name="q" value="<[q]>" placeholder="Via, quartiere o titolo..." list="neighborhoods-list">
+            </div>
+        </div>
+
+        <div class="filter-field">
+            <label for="neighborhood_id">Quartiere</label>
+            <select id="neighborhood_id" name="neighborhood_id" data-custom-select data-select-label="Quartiere"><[neighborhood_options]></select>
+        </div>
+
+        <div class="filter-field">
+            <label for="pole_id">Polo universitario</label>
+            <select id="pole_id" name="pole_id" data-custom-select data-select-label="Polo universitario"><[pole_options]></select>
+        </div>
+
+        <div class="filter-field filter-price">
+            <span class="field-label" id="price-filter-label">Prezzo mensile</span>
+            <div class="price-inputs" aria-labelledby="price-filter-label">
+                <label class="price-input" for="price_min">
+                    <span>Min</span>
+                    <input id="price_min" type="number" name="price_min" value="<[price_min]>" placeholder="0" min="0" step="10" inputmode="numeric">
+                </label>
+                <label class="price-input" for="price_max">
+                    <span>Max</span>
+                    <input id="price_max" type="number" name="price_max" value="<[price_max]>" placeholder="500" min="0" step="10" inputmode="numeric">
+                </label>
+            </div>
+        </div>
+
+        <div class="filter-actions">
+            <button class="button button-filter" type="submit">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+                Cerca
+            </button>
+            <a class="filter-reset" href="<[search_url]>">Azzera</a>
+        </div>
+
+        <div class="filter-row-2">
+            <span class="field-label">Tipologia</span>
+            <div class="chip-set" role="radiogroup" aria-label="Tipologia di stanza">
+                <[type_chips]>
+            </div>
+            <label class="chip-option">
+                <input type="checkbox" name="furnished" value="1" <[furnished_checked]>>
+                <span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" width="15" height="15" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round"><path d="M4 18v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6"/><path d="M4 18h16M6 11V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/></svg>
+                    Solo arredate
+                </span>
+            </label>
+        </div>
+    </form>
+</section>
+
+<section class="results-panel" aria-label="Risultati e ordinamento">
+    <div class="results-summary">
+        <div class="result-count">
+            <strong data-result-count><[result_count]></strong>
+            <span>stanze disponibili</span>
+        </div>
+        <div class="active-filter-chips" aria-label="Filtri attivi">
+            <[active_filter_chips]>
+        </div>
+    </div>
+
+    <div class="results-controls">
+        <div class="live-search-control">
+            <label for="quick-filter">Filtro rapido</label>
+            <div class="input-shell input-shell-compact">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+                <input type="search" id="quick-filter" placeholder="Cerca nei risultati..." aria-label="Filtra rapidamente i risultati caricati">
+            </div>
+        </div>
+
+        <div class="distance-control">
+            <div class="distance-copy">
+                <label for="max-distance">Distanza dai poli</label>
+                <output id="max-distance-value" for="max-distance">qualsiasi</output>
+            </div>
+            <input type="range" id="max-distance" min="2" max="60" step="2" value="60">
+        </div>
+
+        <div class="sort-control">
+            <label for="client-sort">Ordina per</label>
+            <select id="client-sort" name="sort" form="search-filter-form" data-custom-select data-select-label="Ordina risultati" data-select-align="right">
+                <[sort_options]>
+            </select>
+        </div>
+    </div>
+</section>
+
+<div class="search-layout">
+    <div class="search-results">
+        <div class="room-grid" data-search-skeleton hidden aria-hidden="true">
+            <div class="skeleton-card"><div class="skeleton-media"></div><div class="skeleton-body"><span class="skeleton-line skeleton-line--lg"></span><span class="skeleton-line skeleton-line--md"></span><span class="skeleton-line skeleton-line--sm"></span></div></div>
+            <div class="skeleton-card"><div class="skeleton-media"></div><div class="skeleton-body"><span class="skeleton-line skeleton-line--lg"></span><span class="skeleton-line skeleton-line--md"></span><span class="skeleton-line skeleton-line--sm"></span></div></div>
+            <div class="skeleton-card"><div class="skeleton-media"></div><div class="skeleton-body"><span class="skeleton-line skeleton-line--lg"></span><span class="skeleton-line skeleton-line--md"></span><span class="skeleton-line skeleton-line--sm"></span></div></div>
+            <div class="skeleton-card"><div class="skeleton-media"></div><div class="skeleton-body"><span class="skeleton-line skeleton-line--lg"></span><span class="skeleton-line skeleton-line--md"></span><span class="skeleton-line skeleton-line--sm"></span></div></div>
+            <div class="skeleton-card"><div class="skeleton-media"></div><div class="skeleton-body"><span class="skeleton-line skeleton-line--lg"></span><span class="skeleton-line skeleton-line--md"></span><span class="skeleton-line skeleton-line--sm"></span></div></div>
+            <div class="skeleton-card"><div class="skeleton-media"></div><div class="skeleton-body"><span class="skeleton-line skeleton-line--lg"></span><span class="skeleton-line skeleton-line--md"></span><span class="skeleton-line skeleton-line--sm"></span></div></div>
+        </div>
+
+        <[room_list]>
+
+        <div class="panel empty-state live-empty-state" data-live-empty hidden>
+            <span class="empty-illustration"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+            <h2>Nessun risultato nei filtri rapidi</h2>
+            <p class="muted">Allarga la distanza o rimuovi il testo inserito nel filtro rapido.</p>
+        </div>
+
+        <[empty_state]>
+    </div>
+
+    <aside class="search-map-panel" aria-label="Mappa di L'Aquila">
+        <div class="search-map-head">
+            <h2>L'Aquila</h2>
+            <p>Vista dei quartieri universitari e dei poli didattici.</p>
+        </div>
+        <div id="searchMap" style="height: 100%; min-height: 400px; border-radius: 8px;"></div>
+    </aside>
+</div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var mapCenterLat = <[map_center_lat]>;
+    var mapCenterLng = <[map_center_lng]>;
+    var mapZoom = <[map_zoom]>;
+    var markersData = <[markers_json]>;
+    
+    var map = L.map('searchMap').setView([mapCenterLat, mapCenterLng], mapZoom);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    
+    markersData.forEach(function(m) {
+        var marker = L.marker([m.lat, m.lng]).addTo(map);
+        marker.bindPopup("<strong>" + m.title + "</strong><br>" + m.price + " &euro;<br><a href='" + m.url + "'>Vedi stanza</a>");
+    });
+});
+</script>

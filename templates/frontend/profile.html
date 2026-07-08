@@ -1,0 +1,37 @@
+<section class="dashboard-head">
+    <div><h1>Il mio profilo</h1><p class="muted">Aggiorna i tuoi dati personali e la password.</p></div>
+</section>
+
+<div class="profile-grid">
+    <form class="panel form" method="post" action="<[action_url]>" data-validate novalidate>
+        <[csrf_profile]>
+        <input type="hidden" name="action" value="profile">
+        <h2>Dati personali</h2>
+        <[error_profile]>
+        <div class="form-grid">
+            <label class="field"><span class="field-label">Nome</span>
+                <input type="text" name="first_name" value="<[first_name]>" required maxlength="100"></label>
+            <label class="field"><span class="field-label">Cognome</span>
+                <input type="text" name="last_name" value="<[last_name]>" required maxlength="100"></label>
+        </div>
+        <label class="field"><span class="field-label">Email</span>
+            <input type="email" value="<[email]>" disabled></label>
+        <label class="field"><span class="field-label">Telefono</span>
+            <input type="tel" name="phone" value="<[phone]>" maxlength="30"></label>
+        <button class="button" type="submit">Salva dati</button>
+    </form>
+
+    <form class="panel form" method="post" action="<[action_url]>" data-validate novalidate>
+        <[csrf_password]>
+        <input type="hidden" name="action" value="password">
+        <h2>Cambia password</h2>
+        <[error_password]>
+        <label class="field"><span class="field-label">Password attuale</span>
+            <input type="password" name="current_password" required autocomplete="current-password"></label>
+        <label class="field"><span class="field-label">Nuova password</span>
+            <input type="password" name="new_password" required minlength="8" autocomplete="new-password"></label>
+        <label class="field"><span class="field-label">Conferma nuova password</span>
+            <input type="password" name="confirm_password" required minlength="8" data-match="new_password" autocomplete="new-password"></label>
+        <button class="button" type="submit">Aggiorna password</button>
+    </form>
+</div>

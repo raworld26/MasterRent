@@ -1,0 +1,67 @@
+<section class="auth-wrap auth-split">
+    <div class="auth-aside">
+        <span class="auth-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M5 18 16 8l11 10-2.8 3L16 13.6 7.8 21 5 18Z"/><path d="M10 20 16 14.8 22 20v7h-4v-5h-4v5h-4v-7Z"/></svg>
+        </span>
+        <h1>Casa universitaria, senza confusione</h1>
+        <p>Studenti e proprietari hanno percorsi separati, richieste tracciate e annunci facili da gestire.</p>
+    </div>
+    <div class="panel auth-card auth-card-wide">
+        <h2>Crea il tuo account</h2>
+        <p class="muted">Iscriviti come studente per cercare casa, o come proprietario per pubblicare annunci.</p>
+
+        <[error]>
+
+        <form method="post" action="<[register_action]>" class="form" data-validate novalidate>
+            <[csrf_field]>
+
+            <fieldset class="role-choice">
+                <legend class="field-label">Voglio registrarmi come</legend>
+                <label class="role-option">
+                    <input type="radio" name="role" value="student" <[student_checked]>>
+                    <span><strong>Studente</strong><small>Cerco una stanza</small></span>
+                </label>
+                <label class="role-option">
+                    <input type="radio" name="role" value="landlord" <[landlord_checked]>>
+                    <span><strong>Proprietario</strong><small>Pubblico annunci</small></span>
+                </label>
+            </fieldset>
+
+            <div class="form-grid">
+                <label class="field">
+                    <span class="field-label">Nome</span>
+                    <input type="text" name="first_name" value="<[first_name]>" required maxlength="100">
+                </label>
+                <label class="field">
+                    <span class="field-label">Cognome</span>
+                    <input type="text" name="last_name" value="<[last_name]>" required maxlength="100">
+                </label>
+            </div>
+
+            <label class="field">
+                <span class="field-label">Email</span>
+                <input type="email" name="email" value="<[email]>" required autocomplete="email">
+            </label>
+
+            <label class="field">
+                <span class="field-label">Telefono <small class="muted">(facoltativo)</small></span>
+                <input type="tel" name="phone" value="<[phone]>" maxlength="30">
+            </label>
+
+            <div class="form-grid">
+                <label class="field">
+                    <span class="field-label">Password</span>
+                    <input type="password" name="password" required minlength="8" autocomplete="new-password">
+                </label>
+                <label class="field">
+                    <span class="field-label">Conferma password</span>
+                    <input type="password" name="password_confirm" required minlength="8" autocomplete="new-password" data-match="password">
+                </label>
+            </div>
+
+            <button class="button button-block" type="submit">Crea account</button>
+        </form>
+
+        <p class="auth-alt muted">Hai già un account? <a href="<[login_url]>">Accedi</a></p>
+    </div>
+</section>

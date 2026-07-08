@@ -1,0 +1,60 @@
+<section class="dashboard-head">
+    <div>
+        <span class="section-eyebrow">Area studente</span>
+        <h1>Ciao, <[user_name]></h1>
+        <p class="muted">Preferiti, richieste e profilo sempre a portata di mano.</p>
+    </div>
+    <div class="head-actions">
+        <a class="button" href="<[search_url]>">Cerca stanze</a>
+        <form method="post" action="<[logout_url]>" class="inline-form">
+            <[logout_csrf]>
+            <button class="button button-ghost" type="submit">Esci</button>
+        </form>
+    </div>
+</section>
+
+<[attention_panel]>
+
+<div class="stat-links">
+    <a class="stat-link" href="<[favorites_url]>">
+        <span class="stat-num" data-fav-count><[fav_count]></span>
+        <span class="stat-cap">Preferiti</span>
+    </a>
+    <a class="stat-link" href="<[bookings_url]>">
+        <span class="stat-num"><[booking_count]></span>
+        <span class="stat-cap">Richieste inviate</span>
+    </a>
+    <a class="stat-link" href="<[bookings_url]>">
+        <span class="stat-num"><[pending_count]></span>
+        <span class="stat-cap">In attesa di risposta</span>
+    </a>
+    <a class="stat-link" href="<[my_house_url]>">
+        <span class="stat-num"><[my_house_count]></span>
+        <span class="stat-cap">La mia casa</span>
+    </a>
+    <a class="stat-link" href="<[profile_url]>">
+        <span class="stat-num">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        </span>
+        <span class="stat-cap">Profilo</span>
+    </a>
+</div>
+
+<div class="card-grid">
+    <a class="panel feature-card feature-link" href="<[favorites_url]>">
+        <h3>I tuoi preferiti</h3>
+        <p class="muted">Rivedi le stanze che hai salvato e confrontale con calma.</p>
+    </a>
+    <a class="panel feature-card feature-link" href="<[bookings_url]>">
+        <h3>Le tue richieste</h3>
+        <p class="muted">Segui visite, approvazioni e caparra in un unico posto.</p>
+    </a>
+    <a class="panel feature-card feature-link" href="<[my_house_url]>">
+        <h3>La mia casa</h3>
+        <p class="muted"><[my_house_text]></p>
+    </a>
+    <a class="panel feature-card feature-link" href="<[profile_url]>">
+        <h3>Profilo</h3>
+        <p class="muted"><[user_email]></p>
+    </a>
+</div>

@@ -1,0 +1,12 @@
+<div class="gallery">
+    <div class="gallery-main">
+        <img id="gallery-main-img" src="<[gallery_main]>" alt="<[gallery_alt]>">
+    </div>
+    <div class="gallery-thumbs">
+        <[foreach]>
+        <button class="gallery-thumb" type="button" data-full="<[thumb_full]>">
+            <img src="<[thumb_full]>" alt="<[thumb_caption]>" loading="lazy">
+        </button>
+        <[/foreach]>
+    </div>
+</div>
