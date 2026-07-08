@@ -1,0 +1,20 @@
+# Cache generata dal motore template2 (se la cache viene attivata)
+/cache/
+cache/
+
+# Immagini caricate dagli utenti (non versionate, si mantiene solo la cartella)
+/public/assets/uploads/*
+!/public/assets/uploads/.gitkeep
+# Le foto demo degli annunci (versionate: servono per il seed dimostrativo)
+!/public/assets/uploads/demo/
+!/public/assets/uploads/case/
+!/public/assets/uploads/case/*
+
+# File/cartelle locali di lavoro
+.claude/
+/CASE/
+
+# File di sistema
+.DS_Store
+Thumbs.db
+*.log
