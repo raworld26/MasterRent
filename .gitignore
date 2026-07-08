@@ -1,5 +1,9 @@
 /public/assets/uploads/*
 !/public/assets/uploads/.gitkeep
+# Set immagini annunci fornito localmente (usato dai seed): versionato.
+# Restano esclusi demo/ (licenza non verificata) e gli upload utente (prop_*).
+!/public/assets/uploads/case/
+!/public/assets/uploads/case/**
 *.log
 .DS_Store
 Thumbs.db
