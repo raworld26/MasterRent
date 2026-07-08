@@ -29,6 +29,12 @@
         <label class="field check-field check-field-center">
             <input type="checkbox" name="has_elevator" value="1" <[elevator_checked]>> Ascensore presente</label>
     </div>
+    <[if!empty amenities_html]>
+    <fieldset class="field">
+        <legend class="field-label">Servizi / Accessori</legend>
+        <div class="amenity-checks"><[amenities_html]></div>
+    </fieldset>
+    <[/if!empty]>
     <fieldset class="field form-upload-field">
         <legend class="field-label">Foto dell'immobile</legend>
         <label class="upload-drop upload-drop-wide">

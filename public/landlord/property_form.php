@@ -11,6 +11,7 @@ $user = current_user();
 $uid = (int) $user['id'];
 $repo = new PropertyRepository();
 $roomRepo = new RoomRepository();
+$amenityRepo = new AmenityRepository();
 $geo = new GeoRepository();
 
 function property_form_uploaded_images(): array
@@ -137,6 +138,17 @@ $data = [
 $initialPrice = '';
 $error = '';
 
+// Accessori: in modifica pre-seleziona l'unione degli accessori di tutte le stanze dell'immobile.
+$selectedAmenities = [];
+if ($editing) {
+    foreach ($roomRepo->byProperty($id) as $r) {
+        foreach ($roomRepo->amenityIds((int) $r['id']) as $aid) {
+            $selectedAmenities[$aid] = $aid;
+        }
+    }
+    $selectedAmenities = array_values($selectedAmenities);
+}
+
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
     $data = [
         'title' => post_str('title'),
@@ -150,6 +162,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
         'has_elevator' => isset($_POST['has_elevator']) ? 1 : 0,
     ];
     $initialPrice = post_str('price_monthly');
+    $selectedAmenities = array_map('intval', (array) ($_POST['amenities'] ?? []));
     $uploadErrors = [];
     $preparedImages = property_form_prepare_images(property_form_uploaded_images(), $uploadErrors);
 
@@ -168,6 +181,9 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
         $saveErrors = [];
         if ($editing) {
             $repo->update($id, $data);
+            foreach ($roomRepo->byProperty($id) as $r) {
+                $roomRepo->setAmenities((int) $r['id'], $selectedAmenities);
+            }
             $distanceResult = (new MapDistanceService())->syncForProperty($data + ['id' => $id], null, true);
             $savedImages = property_form_save_images($repo, $id, $preparedImages, $saveErrors);
             $message = 'Annuncio aggiornato.';
@@ -187,7 +203,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
             redirect(url_for('landlord/property.php?id=' . $id));
         } else {
             $newId = $repo->create($payload);
-            $roomRepo->create([
+            $newRoomId = $roomRepo->create([
                 'property_id' => $newId,
                 'name' => $data['title'],
                 'type' => 'single',
@@ -197,6 +213,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
                 'contract_type' => 'transitorio',
                 'is_available' => 1,
             ]);
+            $roomRepo->setAmenities($newRoomId, $selectedAmenities);
             $distanceResult = (new MapDistanceService())->syncForProperty($payload + ['id' => $newId], null, true);
             $savedImages = property_form_save_images($repo, $newId, $preparedImages, $saveErrors);
             $message = $savedImages > 0
@@ -215,6 +232,16 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
             redirect(url_for('landlord/property.php?id=' . $newId));
         }
     }
+}
+
+/* ---- Amenities checkboxes (valgono per tutte le stanze dell'immobile) ---- */
+$amenitiesHtml = '';
+foreach ($amenityRepo->all() as $a) {
+    $checked = in_array((int) $a['id'], $selectedAmenities, true) ? 'checked' : '';
+    $icon = trim((string) ($a['icon'] ?? ''));
+    $iconHtml = $icon !== '' ? '<span class="amenity-token">' . e(strtoupper($icon)) . '</span>' : '';
+    $amenitiesHtml .= '<label class="check-item"><input type="checkbox" name="amenities[]" value="' . e($a['id']) . '" ' . $checked . '>'
+        . '<span class="check-copy">' . $iconHtml . '<span class="check-title">' . e($a['name']) . '</span></span></label>';
 }
 
 $content = render_template('frontend/property_form', [
@@ -240,6 +267,7 @@ $content = render_template('frontend/property_form', [
         ['id' => 'centralized', 'name' => 'Centralizzato'],
     ], $data['heating_type'], 'id', 'name'),
     'elevator_checked' => $data['has_elevator'] ? 'checked' : '',
+    'amenities_html' => $amenitiesHtml,
 ]);
 
 render_page_frontend($editing ? 'Modifica annuncio' : 'Nuovo annuncio', $content, ['body_class' => 'page-dashboard']);
