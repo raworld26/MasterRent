@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Illustrazione minimale di L'Aquila</title>
+  <desc id="desc">Profilo del Gran Sasso, archi e case stilizzate per un sito di affitti universitari.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f9fbff"/>
+      <stop offset="0.54" stop-color="#eef4f8"/>
+      <stop offset="1" stop-color="#f8efe8"/>
+    </linearGradient>
+    <linearGradient id="mountain" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#cbd7df"/>
+      <stop offset="0.5" stop-color="#dfe6eb"/>
+      <stop offset="1" stop-color="#becbd5"/>
+    </linearGradient>
+    <linearGradient id="terracotta" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#cf6b4c"/>
+      <stop offset="1" stop-color="#a94d35"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#172033" flood-opacity="0.13"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1290" cy="150" r="98" fill="#f1d5c8" opacity="0.58"/>
+  <path d="M0 454 122 400 214 426 304 362 412 391 520 312 646 390 744 342 858 401 960 317 1082 388 1182 353 1302 412 1410 374 1600 448V900H0Z" fill="url(#mountain)" opacity="0.82"/>
+  <path d="M0 518 170 458 290 486 430 436 590 488 764 430 930 488 1114 424 1280 482 1442 444 1600 492V900H0Z" fill="#e8edf1"/>
+
+  <g filter="url(#softShadow)">
+    <path d="M220 585h1160v214H220z" fill="#ffffff" opacity="0.86"/>
+    <path d="M220 585h1160v42H220z" fill="#f5f8fa"/>
+    <path d="M220 585h1160" stroke="#dfe7ee" stroke-width="2"/>
+  </g>
+
+  <g opacity="0.98">
+    <path d="M258 585h126l-63-58z" fill="url(#terracotta)"/>
+    <rect x="274" y="617" width="94" height="126" rx="10" fill="#ffffff"/>
+    <rect x="296" y="646" width="20" height="32" rx="10" fill="#cfdce5"/>
+    <rect x="326" y="646" width="20" height="32" rx="10" fill="#cfdce5"/>
+    <rect x="307" y="700" width="30" height="43" rx="15" fill="#172033" opacity="0.88"/>
+
+    <path d="M418 585h166l-83-76z" fill="#d98262"/>
+    <rect x="440" y="626" width="120" height="117" rx="12" fill="#ffffff"/>
+    <rect x="466" y="656" width="23" height="36" rx="11.5" fill="#cfdce5"/>
+    <rect x="511" y="656" width="23" height="36" rx="11.5" fill="#cfdce5"/>
+    <path d="M464 743v-42c0-18 15-32 33-32s33 14 33 32v42z" fill="#203248"/>
+
+    <path d="M608 585h306l-153-118z" fill="#c75d42"/>
+    <rect x="645" y="620" width="232" height="146" rx="16" fill="#ffffff"/>
+    <path d="M707 766v-72c0-30 24-54 54-54s54 24 54 54v72z" fill="#172033"/>
+    <circle cx="761" cy="580" r="32" fill="#f7fbff" stroke="#cfdce5" stroke-width="8"/>
+    <circle cx="761" cy="580" r="9" fill="#c75d42"/>
+    <rect x="676" y="650" width="25" height="42" rx="12.5" fill="#cfdce5"/>
+    <rect x="821" y="650" width="25" height="42" rx="12.5" fill="#cfdce5"/>
+
+    <path d="M945 585h194l-97-86z" fill="#df8a68"/>
+    <rect x="972" y="625" width="140" height="118" rx="12" fill="#ffffff"/>
+    <rect x="1000" y="654" width="24" height="37" rx="12" fill="#cfdce5"/>
+    <rect x="1060" y="654" width="24" height="37" rx="12" fill="#cfdce5"/>
+    <rect x="1028" y="710" width="30" height="33" rx="15" fill="#203248"/>
+
+    <path d="M1170 585h150l-75-66z" fill="#bd5b42"/>
+    <rect x="1191" y="620" width="108" height="123" rx="12" fill="#ffffff"/>
+    <rect x="1217" y="650" width="24" height="38" rx="12" fill="#cfdce5"/>
+    <rect x="1252" y="650" width="24" height="38" rx="12" fill="#cfdce5"/>
+  </g>
+
+  <g fill="none" stroke="#172033" stroke-linecap="round" opacity="0.18">
+    <path d="M290 805c110-38 220-38 330 0s220 38 330 0 220-38 330 0" stroke-width="5"/>
+    <path d="M396 826c92-24 184-24 276 0s184 24 276 0 184-24 276 0" stroke-width="4"/>
+  </g>
+
+  <g transform="translate(1260 474)">
+    <path d="M54 0c30 0 54 24 54 54 0 46-54 100-54 100S0 100 0 54C0 24 24 0 54 0z" fill="#172033"/>
+    <circle cx="54" cy="54" r="21" fill="#ffffff"/>
+    <path d="M44 55h20M54 45v20" stroke="#c75d42" stroke-width="7" stroke-linecap="round"/>
+  </g>
+</svg>

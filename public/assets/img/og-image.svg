@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="MasterRent — Affitti universitari curati a L'Aquila">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6f2ec"/>
+      <stop offset="1" stop-color="#f0e4d6"/>
+    </linearGradient>
+    <linearGradient id="peak" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cfc4ad"/>
+      <stop offset="1" stop-color="#efe9df"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#sky)"/>
+  <!-- Gran Sasso stilizzato -->
+  <path d="M0 470 220 300 380 430 560 260 760 440 940 320 1200 480V630H0Z" fill="url(#peak)"/>
+  <path d="M0 520 260 380 460 500 680 360 900 510 1200 420V630H0Z" fill="#e4dccc" opacity=".8"/>
+  <!-- Tetti terracotta -->
+  <path d="M80 630v-90l70-52 70 52v90Z" fill="#b0472a"/>
+  <path d="M250 630v-70l55-40 55 40v70Z" fill="#c08a2d"/>
+  <path d="M390 630v-105l80-58 80 58v105Z" fill="#8e3820"/>
+  <!-- Marchio -->
+  <g transform="translate(600 210)">
+    <rect x="-36" y="-36" width="72" height="72" rx="18" fill="#b0472a"/>
+    <path d="M-27 12-12.4-17l12.4 18 12.4-18L27 12h-7.6l-7-14.4L0 15.6l-12.4-18-7 14.4Z" fill="#f8f3ec"/>
+  </g>
+  <text x="600" y="330" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="86" fill="#272219">Maste<tspan fill="#b0472a">Rent</tspan></text>
+  <text x="600" y="385" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="30" fill="#6e675c">Affitti universitari curati a L'Aquila</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" role="img" aria-label="Immagine non disponibile">
+  <rect width="900" height="600" fill="#F5F6F8"/>
+  <path d="M0 470 L260 300 L430 420 L600 250 L900 470 L900 600 L0 600 Z" fill="#DFE3EA"/>
+  <path d="M0 510 L200 390 L380 500 L560 360 L900 540 L900 600 L0 600 Z" fill="#C8CED8"/>
+  <circle cx="720" cy="150" r="54" fill="#E6B6A8"/>
+  <text x="450" y="320" font-family="Inter, system-ui, sans-serif" font-size="34" fill="#172033" text-anchor="middle" font-weight="700">MasterRent</text>
+</svg>

@@ -1,0 +1,21 @@
+/* ==========================================================================
+   MasterRent — Frontend (orchestratore)
+   Questo file non contiene regole: importa il design system nell'ordine
+   corretto. I colori vivono SOLO in tokens.css; struttura in layout.css;
+   componenti riusabili in components/.
+   ========================================================================== */
+
+@import url("tokens.css");
+@import url("base.css");
+@import url("layout.css");
+
+@import url("components/button.css");
+@import url("components/badge.css");
+@import url("components/card.css");
+@import url("components/form.css");
+@import url("components/table.css");
+@import url("components/stepper.css");
+@import url("components/toast.css");
+@import url("components/lightbox.css");
+@import url("components/empty-state.css");
+@import url("components/skeleton.css");

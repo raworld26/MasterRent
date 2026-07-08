@@ -1,0 +1,16 @@
+# MasterRent — robots.txt
+User-agent: *
+Allow: /
+
+# Aree riservate e azioni: non indicizzare.
+Disallow: /admin/
+Disallow: /account/
+Disallow: /landlord/
+Disallow: /login.php
+Disallow: /register.php
+Disallow: /logout.php
+Disallow: /booking.php
+Disallow: /deposit.php
+Disallow: /favorite.php
+
+Sitemap: /sitemap.xml

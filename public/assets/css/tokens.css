@@ -1,0 +1,148 @@
+/* ==========================================================================
+   MasterRent — Design tokens
+   UNICO file dove sono ammessi valori colore letterali (hex/rgba).
+   Tutto il resto del CSS consuma esclusivamente queste custom properties.
+
+   Direzione: L'Aquila — pietra chiara, terracotta dei tetti, ambra dorata,
+   grafite calda della montagna al tramonto. Niente blu SaaS.
+   ========================================================================== */
+
+:root {
+    /* ---- Superfici (light) ------------------------------------------- */
+    --color-bg: #f6f2ec;            /* avorio caldo, carta di pietra      */
+    --color-bg-deep: #efe9df;       /* fascia alternata delle sezioni     */
+    --color-surface: #fdfcfa;       /* pannelli, leggermente più freddo   */
+    --color-surface-soft: #faf6f0;  /* superfici secondarie               */
+
+    /* ---- Inchiostri ---------------------------------------------------- */
+    --color-ink: #272219;           /* grafite profonda calda             */
+    --color-ink-soft: #48413a;
+    --color-muted: #6e675c;
+    --color-muted-2: #948b7c;
+    --color-invert-ink: #f8f3ec;    /* testo su superfici scure           */
+
+    /* ---- Linee --------------------------------------------------------- */
+    --color-border: #e4dccc;
+    --color-border-strong: #cfc4ad;
+
+    /* ---- Brand: terracotta L'Aquila ------------------------------------ */
+    --color-primary: #b0472a;       /* terracotta dei tetti               */
+    --color-primary-strong: #8e3820;/* hover / testo su chiaro            */
+    --color-primary-soft: #f4e2d8;  /* wash                               */
+    --color-primary-ghost: #faf0e9; /* wash più tenue                     */
+
+    /* ---- Accento secondario: ambra dorata ------------------------------ */
+    --color-accent: #c08a2d;
+    --color-accent-strong: #7d5714;
+    --color-accent-soft: #f5e8cd;
+
+    /* ---- Semantici ------------------------------------------------------ */
+    --color-success: #47714f;       /* verde salvia                       */
+    --color-success-bg: #e5efe2;
+    --color-warning: #8f6407;       /* ocra                               */
+    --color-warning-bg: #f8ecce;
+    --color-danger: #9d3220;        /* ruggine                            */
+    --color-danger-bg: #f7e3dc;
+    --color-info: #48626e;          /* pietra blu-grigia                  */
+    --color-info-bg: #e4edf0;
+
+    /* ---- Overlay e ombre ------------------------------------------------ */
+    --color-overlay: rgba(24, 18, 12, .82);
+    --color-scrim: rgba(24, 18, 12, .42);
+    --shadow-xs: 0 1px 2px rgba(39, 34, 25, .06);
+    --shadow-sm: 0 2px 10px rgba(39, 34, 25, .07);
+    --shadow-md: 0 12px 32px rgba(39, 34, 25, .11);
+    --shadow-lg: 0 24px 60px rgba(39, 34, 25, .16);
+    --shadow-ring: 0 0 0 3px rgba(176, 71, 42, .28);   /* focus terracotta */
+
+    /* ---- Tipografia ------------------------------------------------------ */
+    --font-display: 'Fraunces', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Manrope', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --text-xs: .78rem;
+    --text-sm: .875rem;
+    --text-md: 1rem;
+    --text-lg: 1.15rem;
+    --text-xl: 1.45rem;
+    --text-2xl: 1.9rem;
+    --text-3xl: clamp(2.1rem, 4.5vw, 3rem);
+    --text-hero: clamp(2.5rem, 6vw, 4.2rem);
+
+    /* ---- Spaziatura (ritmo verticale) ----------------------------------- */
+    --space-1: .25rem;
+    --space-2: .5rem;
+    --space-3: .75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+    --space-9: 6rem;
+
+    /* ---- Raggi ----------------------------------------------------------- */
+    --radius-xs: 6px;
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-full: 999px;
+
+    /* ---- Motion ----------------------------------------------------------- */
+    --ease-out: cubic-bezier(.22, .61, .36, 1);
+    --ease-spring: cubic-bezier(.34, 1.45, .55, 1);
+    --dur-1: 150ms;
+    --dur-2: 220ms;
+    --dur-3: 400ms;
+
+    /* ---- Layout ------------------------------------------------------------ */
+    --container-max: 1200px;
+    --container-pad: clamp(1rem, 4vw, 2rem);
+
+    color-scheme: light;
+}
+
+/* ==========================================================================
+   Dark — grafite calda, non un'inversione automatica: superfici brune,
+   terracotta più satura, ambra accesa, semantici desaturati e leggibili.
+   ========================================================================== */
+[data-theme="dark"] {
+    --color-bg: #211c16;
+    --color-bg-deep: #1a1611;
+    --color-surface: #2a241c;
+    --color-surface-soft: #251f18;
+
+    --color-ink: #f0e9dd;
+    --color-ink-soft: #d8cfc0;
+    --color-muted: #a99e8c;
+    --color-muted-2: #837a6a;
+    --color-invert-ink: #f8f3ec;
+
+    --color-border: #3b342a;
+    --color-border-strong: #524839;
+
+    --color-primary: #d3653f;
+    --color-primary-strong: #e0805c;
+    --color-primary-soft: #46281c;
+    --color-primary-ghost: #362219;
+
+    --color-accent: #d9a344;
+    --color-accent-strong: #e7bc6e;
+    --color-accent-soft: #3e311f;
+
+    --color-success: #8db98f;
+    --color-success-bg: #27342a;
+    --color-warning: #d3a83d;
+    --color-warning-bg: #3a301a;
+    --color-danger: #d9765f;
+    --color-danger-bg: #3f2620;
+    --color-info: #9db8c2;
+    --color-info-bg: #26333a;
+
+    --color-overlay: rgba(10, 8, 5, .88);
+    --color-scrim: rgba(10, 8, 5, .55);
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, .35);
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, .35);
+    --shadow-md: 0 12px 32px rgba(0, 0, 0, .45);
+    --shadow-lg: 0 24px 60px rgba(0, 0, 0, .55);
+    --shadow-ring: 0 0 0 3px rgba(211, 101, 63, .4);
+
+    color-scheme: dark;
+}

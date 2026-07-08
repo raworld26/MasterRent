@@ -1,0 +1,256 @@
+/* ==========================================================================
+   MasterRent — Bottoni
+   .button è la classe storica dei template; .btn resta come alias legacy.
+   Varianti: --primary (default), ghost, danger, small, block, register.
+   ========================================================================== */
+
+.button,
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .62rem 1.25rem;
+    border: 1.5px solid var(--color-primary);
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    color: var(--color-invert-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+    text-align: center;
+    transition:
+        background-color var(--dur-1) var(--ease-out),
+        border-color var(--dur-1) var(--ease-out),
+        color var(--dur-1) var(--ease-out),
+        transform var(--dur-1) var(--ease-out),
+        box-shadow var(--dur-1) var(--ease-out);
+}
+
+.button svg,
+.btn svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.button:hover,
+.btn:hover {
+    background: var(--color-primary-strong);
+    border-color: var(--color-primary-strong);
+    color: var(--color-invert-ink);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.button:active,
+.btn:active { transform: translateY(0); }
+
+.button:disabled,
+.button.is-loading,
+.btn:disabled {
+    opacity: .65;
+    cursor: progress;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ---- Ghost ------------------------------------------------------------------ */
+.button-ghost,
+.btn-secondary {
+    background: transparent;
+    border-color: var(--color-border-strong);
+    color: var(--color-ink-soft);
+}
+.button-ghost:hover,
+.btn-secondary:hover {
+    background: var(--color-primary-ghost);
+    border-color: var(--color-primary);
+    color: var(--color-primary-strong);
+    box-shadow: none;
+}
+
+/* ---- Danger ----------------------------------------------------------------- */
+.button-danger,
+.btn-danger {
+    background: transparent;
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+}
+.button-danger:hover,
+.btn-danger:hover {
+    background: var(--color-danger);
+    border-color: var(--color-danger);
+    color: var(--color-invert-ink);
+}
+
+/* ---- Accent (registrati / CTA secondarie) ------------------------------------ */
+.button-register {
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: var(--color-bg);
+}
+.button-register:hover {
+    background: var(--color-ink-soft);
+    border-color: var(--color-ink-soft);
+    color: var(--color-bg);
+}
+[data-theme="dark"] .button-register {
+    background: var(--color-invert-ink);
+    border-color: var(--color-invert-ink);
+    color: var(--color-bg);
+}
+
+/* ---- Alias semantici legacy (pagine admin) ---------------------------------------- */
+.btn-info {
+    background: var(--color-info);
+    border-color: var(--color-info);
+    color: var(--color-invert-ink);
+}
+.btn-info:hover {
+    background: color-mix(in srgb, var(--color-info) 85%, var(--color-ink));
+    border-color: color-mix(in srgb, var(--color-info) 85%, var(--color-ink));
+    color: var(--color-invert-ink);
+}
+.btn-success {
+    background: var(--color-success);
+    border-color: var(--color-success);
+    color: var(--color-invert-ink);
+}
+.btn-success:hover {
+    background: color-mix(in srgb, var(--color-success) 85%, var(--color-ink));
+    border-color: color-mix(in srgb, var(--color-success) 85%, var(--color-ink));
+    color: var(--color-invert-ink);
+}
+.btn-warning {
+    background: transparent;
+    border-color: var(--color-warning);
+    color: var(--color-warning);
+}
+.btn-warning:hover {
+    background: var(--color-warning);
+    border-color: var(--color-warning);
+    color: var(--color-invert-ink);
+}
+
+/* ---- Dimensioni ----------------------------------------------------------------- */
+.button-small,
+.btn-sm {
+    padding: .4rem .9rem;
+    font-size: var(--text-xs);
+}
+.button-block { width: 100%; }
+
+/* CTA scure su banda scura (cta-band) */
+.cta-band .button {
+    background: var(--color-invert-ink);
+    border-color: var(--color-invert-ink);
+    color: var(--color-ink);
+}
+.cta-band .button:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-ink);
+}
+
+/* ---- Link-azione (nelle tabelle) ------------------------------------------------ */
+.link-action,
+.link-danger {
+    display: inline;
+    border: 0;
+    padding: 0;
+    background: none;
+    font: inherit;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    cursor: pointer;
+}
+.link-action { color: var(--color-primary-strong); }
+.link-action:hover { color: var(--color-primary); text-decoration: underline; }
+.link-danger { color: var(--color-danger); }
+.link-danger:hover { text-decoration: underline; }
+
+/* ---- Toggle tema chiaro/scuro -------------------------------------------------------- */
+.theme-toggle {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background: var(--color-surface);
+    color: var(--color-ink-soft);
+    cursor: pointer;
+    transition: border-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out), transform var(--dur-1) var(--ease-out);
+}
+.theme-toggle:hover {
+    border-color: var(--color-border-strong);
+    color: var(--color-primary-strong);
+    transform: rotate(12deg);
+}
+.theme-toggle svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+/* ---- Cuore preferito -------------------------------------------------------------- */
+.fav-btn {
+    display: grid;
+    place-items: center;
+    width: 2.35rem;
+    height: 2.35rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+    cursor: pointer;
+    transition: transform var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out);
+}
+.fav-btn svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    fill: none;
+    stroke: var(--color-ink-soft);
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: fill var(--dur-1) var(--ease-out), stroke var(--dur-1) var(--ease-out), transform var(--dur-1) var(--ease-out);
+}
+.fav-btn:hover {
+    border-color: var(--color-primary);
+    transform: scale(1.06);
+}
+.fav-btn.is-fav svg {
+    fill: var(--color-primary);
+    stroke: var(--color-primary);
+}
+.fav-btn.just-toggled svg {
+    animation: fav-pop var(--dur-3) var(--ease-spring);
+}
+.fav-btn-lg { width: 2.9rem; height: 2.9rem; }
+.fav-btn-lg svg { width: 1.4rem; height: 1.4rem; }
+
+@keyframes fav-pop {
+    0% { transform: scale(.6); }
+    55% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fav-btn.just-toggled svg { animation: none; }
+}

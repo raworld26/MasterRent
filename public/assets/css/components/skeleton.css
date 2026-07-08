@@ -1,0 +1,95 @@
+/* ==========================================================================
+   MasterRent — Skeleton loader
+   Shimmer per: immagini card in caricamento (ui.js toglie .is-loading),
+   e skeleton card mostrate mentre search.js ricalcola la lista.
+   ========================================================================== */
+
+/* ---- Shimmer immagini card -------------------------------------------------- */
+.room-card-media.is-loading img { opacity: 0; }
+.room-card-media.is-loading::after,
+.skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        100deg,
+        transparent 20%,
+        color-mix(in srgb, var(--color-surface) 65%, transparent) 50%,
+        transparent 80%);
+    animation: skeleton-shimmer 1.4s infinite;
+}
+img[data-img-reveal] { transition: opacity var(--dur-3) var(--ease-out); }
+img[data-img-reveal].is-loaded { opacity: 1; }
+
+/* ---- Blocchi skeleton generici ------------------------------------------------ */
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-bg-deep);
+    border-radius: var(--radius-sm);
+}
+
+.skeleton-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+.skeleton-card .skeleton-media {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--color-bg-deep);
+}
+.skeleton-card .skeleton-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        100deg,
+        transparent 20%,
+        color-mix(in srgb, var(--color-surface) 65%, transparent) 50%,
+        transparent 80%);
+    animation: skeleton-shimmer 1.4s infinite;
+}
+.skeleton-card .skeleton-body {
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+    padding: var(--space-4);
+}
+.skeleton-line {
+    position: relative;
+    overflow: hidden;
+    height: .8rem;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-deep);
+}
+.skeleton-line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        100deg,
+        transparent 20%,
+        color-mix(in srgb, var(--color-surface) 65%, transparent) 50%,
+        transparent 80%);
+    animation: skeleton-shimmer 1.4s infinite;
+}
+.skeleton-line--lg { height: 1.15rem; width: 55%; }
+.skeleton-line--md { width: 80%; }
+.skeleton-line--sm { width: 40%; }
+
+@keyframes skeleton-shimmer {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .room-card-media.is-loading::after,
+    .skeleton::after,
+    .skeleton-card .skeleton-media::after,
+    .skeleton-line::after { animation: none; }
+}

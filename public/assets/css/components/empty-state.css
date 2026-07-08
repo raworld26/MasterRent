@@ -1,0 +1,49 @@
+/* ==========================================================================
+   MasterRent — Empty state
+   Stato vuoto riutilizzabile: illustrazione, titolo, testo, azione.
+   ========================================================================== */
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-7) var(--space-5);
+    text-align: center;
+}
+
+.empty-state h1,
+.empty-state h2 {
+    margin: 0;
+    font-size: var(--text-xl);
+}
+
+.empty-state p {
+    margin: 0;
+    max-width: 42ch;
+    color: var(--color-muted);
+}
+
+.empty-state .button { margin-top: var(--space-3); }
+
+.empty-illustration {
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: var(--space-2);
+    border-radius: var(--radius-full);
+    background: var(--color-primary-ghost);
+    border: 1px dashed var(--color-primary-soft);
+}
+.empty-illustration svg {
+    width: 1.7rem;
+    height: 1.7rem;
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.live-empty-state[hidden] { display: none; }

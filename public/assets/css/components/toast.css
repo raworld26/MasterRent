@@ -1,0 +1,159 @@
+/* ==========================================================================
+   MasterRent — Feedback: toast, alert inline, banner di stato pagina
+   I flash server (.alert) vengono promossi a toast da toasts.js;
+   senza JavaScript restano avvisi inline leggibili.
+   ========================================================================== */
+
+/* ---- Alert inline (fallback no-JS + errori form) ------------------------------ */
+.alert {
+    display: flex;
+    align-items: flex-start;
+    gap: .6rem;
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-soft);
+    color: var(--color-ink-soft);
+    font-size: var(--text-sm);
+    font-weight: 600;
+}
+.alert-list { margin: 0; padding-left: 1.1rem; }
+.alert-success {
+    background: var(--color-success-bg);
+    border-color: color-mix(in srgb, var(--color-success) 35%, transparent);
+    color: var(--color-success);
+}
+.alert-warning {
+    background: var(--color-warning-bg);
+    border-color: color-mix(in srgb, var(--color-warning) 35%, transparent);
+    color: var(--color-warning);
+}
+.alert-danger {
+    background: var(--color-danger-bg);
+    border-color: color-mix(in srgb, var(--color-danger) 35%, transparent);
+    color: var(--color-danger);
+}
+.alert-info {
+    background: var(--color-info-bg);
+    border-color: color-mix(in srgb, var(--color-info) 35%, transparent);
+    color: var(--color-info);
+}
+
+/* Contenitore dei flash server (promossi a toast da toasts.js). */
+.flash-area { margin-bottom: var(--space-4); }
+
+/* ---- Banner di stato (es. stanza non disponibile) -------------------------------- */
+.banner {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    margin: var(--space-4) 0;
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--color-border-strong);
+    background: var(--color-surface-soft);
+}
+.banner svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    flex: none;
+    margin-top: .1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.banner strong { display: block; margin-bottom: .15rem; }
+.banner p { margin: 0; font-size: var(--text-sm); }
+.banner--warning {
+    border-color: color-mix(in srgb, var(--color-warning) 45%, transparent);
+    background: var(--color-warning-bg);
+    color: var(--color-warning);
+}
+.banner--danger {
+    border-color: color-mix(in srgb, var(--color-danger) 45%, transparent);
+    background: var(--color-danger-bg);
+    color: var(--color-danger);
+}
+.banner--info {
+    border-color: color-mix(in srgb, var(--color-info) 45%, transparent);
+    background: var(--color-info-bg);
+    color: var(--color-info);
+}
+
+/* ---- Toast stack -------------------------------------------------------------------- */
+.toast-stack {
+    position: fixed;
+    right: var(--space-4);
+    bottom: var(--space-4);
+    z-index: 150;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    max-width: min(22rem, calc(100vw - 2 * var(--space-4)));
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .75rem 1rem;
+    background: var(--color-ink);
+    color: var(--color-bg);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-spring);
+}
+[data-theme="dark"] .toast {
+    background: var(--color-surface);
+    color: var(--color-ink);
+    border: 1px solid var(--color-border-strong);
+}
+.toast.is-in { opacity: 1; transform: translateY(0); }
+.toast.is-leaving { opacity: 0; transform: translateY(6px); }
+
+.toast-icon {
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    flex: none;
+    border-radius: var(--radius-full);
+}
+.toast-icon svg {
+    width: .95rem;
+    height: .95rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.toast-success .toast-icon { background: var(--color-success); color: var(--color-invert-ink); }
+.toast-info .toast-icon { background: var(--color-info); color: var(--color-invert-ink); }
+.toast-warning .toast-icon { background: var(--color-warning); color: var(--color-invert-ink); }
+.toast-danger .toast-icon { background: var(--color-danger); color: var(--color-invert-ink); }
+
+.toast-msg { flex: 1; }
+.toast-close {
+    flex: none;
+    border: 0;
+    background: none;
+    color: inherit;
+    font-size: 1.15rem;
+    line-height: 1;
+    opacity: .7;
+    cursor: pointer;
+    padding: .1rem .2rem;
+}
+.toast-close:hover { opacity: 1; }
+
+@media (max-width: 720px) {
+    .toast-stack { bottom: calc(4.5rem + var(--space-3)); } /* sopra la bottom-nav */
+}
