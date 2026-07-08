@@ -37,6 +37,17 @@ $data = [
 $initialPrice = '';
 $error = '';
 
+// Accessori: in modifica pre-seleziona l'unione degli accessori di tutte le stanze dell'immobile.
+$selectedAmenities = [];
+if ($editing) {
+    foreach (rooms_by_property($id) as $r) {
+        foreach (room_amenity_ids((int) $r['id']) as $aid) {
+            $selectedAmenities[$aid] = $aid;
+        }
+    }
+    $selectedAmenities = array_values($selectedAmenities);
+}
+
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
     $data = [
         'title' => post_str('title'),
@@ -50,6 +61,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
         'has_elevator' => isset($_POST['has_elevator']) ? 1 : 0,
     ];
     $initialPrice = post_str('price_monthly');
+    $selectedAmenities = array_map('intval', (array) ($_POST['amenities'] ?? []));
 
     if (!verify_csrf_token((string) ($_POST['csrf_token'] ?? ''), 'property_form')) {
         $error = 'Sessione scaduta. Riprova.';
@@ -63,9 +75,12 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
         if ($editing) {
             property_update($id, $data);
             $targetId = $id;
+            foreach (rooms_by_property($id) as $r) {
+                room_set_amenities((int) $r['id'], $selectedAmenities);
+            }
         } else {
             $targetId = property_create($data + ['landlord_id' => $uid]);
-            room_create([
+            $newRoomId = room_create([
                 'property_id' => $targetId,
                 'name' => $data['title'],
                 'type' => 'single',
@@ -75,6 +90,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
                 'contract_type' => 'Transitorio Studenti',
                 'is_available' => 1,
             ]);
+            room_set_amenities($newRoomId, $selectedAmenities);
             property_refresh_room_count($targetId);
         }
 
@@ -118,6 +134,13 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
 
 $heatingItems = [['id' => 'autonomous', 'name' => 'Autonomo'], ['id' => 'centralized', 'name' => 'Centralizzato']];
 
+// Accessori (valgono per tutte le stanze dell'immobile).
+$amenitiesHtml = '';
+foreach (amenities_all() as $a) {
+    $amenitiesHtml .= '<label class="check-row"><input type="checkbox" name="amenities[]" value="' . e((string) $a['id']) . '"'
+        . checked_attr(in_array((int) $a['id'], $selectedAmenities, true)) . '> ' . e((string) $a['name']) . '</label>';
+}
+
 $html = '<section class="dashboard-shell">'
     . '<header class="dashboard-header"><div><p class="eyebrow">Area Proprietario</p><h1>' . ($editing ? 'Modifica annuncio' : 'Nuovo annuncio') . '</h1></div>'
     . '<a class="button-secondary" href="' . e($editing ? url_for('landlord/property.php?id=' . $id) : url_for('landlord/index.php')) . '">Annulla</a></header>'
@@ -141,6 +164,7 @@ $html = '<section class="dashboard-shell">'
     . '<div class="form-group"><label>Riscaldamento</label><select name="heating_type">' . select_options($heatingItems, $data['heating_type'], 'id', 'name') . '</select></div>'
     . '<div class="form-group"><label class="check-row"><input type="checkbox" name="has_elevator" value="1"' . checked_attr((bool) $data['has_elevator']) . '> Ascensore presente</label></div>'
     . '</div>'
+    . '<div class="form-group"><label>Accessori</label><div class="check-list">' . $amenitiesHtml . '</div></div>'
     . '<div class="form-group"><label>Foto (una o più, JPG/PNG/WebP max 4 MB)</label><input type="file" name="images[]" accept="image/jpeg,image/png,image/webp" multiple></div>'
     . '<div class="form-actions"><button type="submit" class="button-primary">' . ($editing ? 'Salva modifiche' : 'Crea annuncio') . '</button></div>'
     . '</form></section></section>';
