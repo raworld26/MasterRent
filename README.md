@@ -8,32 +8,13 @@ Questa è la **Fase 1** del progetto MasterRent. In questa fase il codice è sta
 - Database utilizzato: `masterrent`.
 
 ## Come Avviare (Fase 1)
-Importare gli script SQL in ordine numerico e avviare il server PHP integrato:
-
-```bash
-# Import SQL
-sql/000_database.sql
-sql/001_auth_schema.sql
-sql/002_auth_seed.sql
-sql/003_laquila_geo_schema.sql
-sql/004_laquila_geo_seed.sql
-sql/005_laquila_geo_services.sql
-sql/006_properties_schema.sql
-sql/007_properties_seed.sql
-sql/008_engagement_schema.sql
-sql/009_engagement_seed.sql
-sql/010_my_house_flow.sql
-
-# Avvio server
-git checkout phase1
-cd C:\Users\Ospite\Desktop\MasterRent
-php -S 127.0.0.1:8000 -t public
-```
-Il portale è quindi raggiungibile su **http://127.0.0.1:8000/**.
-### Account Demo
-Puoi accedere con i seguenti account dimostrativi (Password per tutti: `Admin123!`):
-   - **Admin:** `admin@masterrent.it`
-   - **OdO (Offerente):** `odo@masterrent.it`
-   - **Studente:** `studente@masterrent.it`
+1. Assicurati di avere un server web (es. XAMPP, MAMP) con PHP 8.2 e MariaDB/MySQL.
+2. Crea un database chiamato `masterrent`.
+3. Importa gli script SQL che trovi in `sql/` in ordine sequenziale (da `000` a `010`). Fai attenzione alla porta del database (es. `3306` o `3307` a seconda della tua installazione locale).
+4. Punta la *Document Root* del tuo web server (o usa `php -S 127.0.0.1:8000 -t public`) alla cartella `public/` del progetto. Il portale sarà raggiungibile su **http://127.0.0.1:8000/**.
+5. Accedi utilizzando gli account demo (Password per tutti: `Admin123!`):
+   - **Admin:** `admin@uniaffitti.local`
+   - **OdO (Offerente):** `odo@uniaffitti.local`
+   - **Studente:** `studente@uniaffitti.local`
 
 *Per la documentazione completa e il confronto con la Fase 2, torna sul branch `main` e consulta la cartella `docs/`.*
