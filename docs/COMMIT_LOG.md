@@ -16,7 +16,7 @@ git branch --all --contains <hash>
 | Branch/ref | Commit tip | Stato osservato |
 | --- | --- | --- |
 | `main` / `origin/main` | `9478d1e` | base condivisa storica, "Fix frontend images and dark CTA" |
-| `phase1` / `origin/phase1` | `3efd115` | branch corrente, Fase 1 tradizionale con documentazione finale gia' avviata |
+| `phase1` / `origin/phase1` | `40e6229` | branch corrente, Fase 1 tradizionale con documentazione finale gia' avviata |
 | `phase2` / `origin/phase2` | `d919f66` | worktree separato `C:\Users\Ospite\Desktop\MasterRentPhase2`, Fase 2 assistita da LLM |
 | `refs/stash` | `f9ab738` | stash tecnico su `main`, non conteggiato come commit di consegna |
 
@@ -55,15 +55,15 @@ git branch --all --contains <hash>
 | `c1bb65a` | 2026-07-07 | `Mattia` | `phase1` | feat: completo allineamento phase1 a phase2 (admin, routing, engagement) |
 | `2fb2a89` | 2026-07-07 | `Mattia` | `phase1` | Fix syntax errors and missing variables in admin modules |
 | `7248b2b` | 2026-07-07 | `Mattia` | `phase2` | Continua lavoro Codex: distanze automatiche fase 2 |
-| `e6213fb` | 2026-07-07 | `Mattia` | `phase1` | Continua lavoro Codex: distanze manuali fase 1 |
-| `ef57113` | 2026-07-07 | `Mattia` | `phase1` | Impedisci prenotazione o versamento caparra se si ha gia' una casa attuale |
+| `63f13c8` | 2026-07-07 | `Mattia` | `phase1` | Distanze manuali fase 1 |
+| `e5ea6fe` | 2026-07-07 | `Mattia` | `phase1` | Impedisci prenotazione o versamento caparra se si ha gia' una casa attuale |
 | `6efd9ac` | 2026-07-07 | `Mattia` | `phase2` | Impedisci prenotazione o versamento caparra se si ha gia' una casa attuale |
-| `57c7742` | 2026-07-07 | `Mattia` | `phase1` | Implementazione richieste: restituzione caparra, libera casa e fix visualizzazione admin |
+| `a47e027` | 2026-07-07 | `Mattia` | `phase1` | Implementazione richieste: restituzione caparra, libera casa e fix visualizzazione admin |
 | `d919f66` | 2026-07-07 | `Mattia` | `phase2` | Implementazione richieste: restituzione caparra, mappa quartieri dinamica, libera casa e fix vari |
-| `cb9c0d9` | 2026-07-07 | `Mattia` | `phase1` | Housekeeping: rimuovi codice orfano e morto, fix link admin recensioni |
-| `bf5597b` | 2026-07-07 | `Mattia` | `phase1` | docs: aggiorna ER e aggiungi deliverable finali (relazione, diario, piano commit) |
-| `03df105` | 2026-07-07 | `Mattia` | `phase1` | docs: aggiungi log prompt autentico (LOG_PROMPT.md) con screenshot delle sessioni LLM |
-| `3efd115` | 2026-07-07 | `Mattia` | `phase1` | docs: estendi LOG_PROMPT con prompt ricostruiti a memoria (sez. F) |
+| `1919fcd` | 2026-07-07 | `Mattia` | `phase1` | Housekeeping: rimuovi codice orfano e morto, fix link admin recensioni |
+| `11aaeaa` | 2026-07-07 | `Mattia` | `phase1` | docs: aggiorna ER e aggiungi deliverable finali (relazione, diario, piano commit) |
+| `05e3183` | 2026-07-07 | `Mattia` | `phase1` | docs: aggiungi log prompt autentico (LOG_PROMPT.md) con screenshot delle sessioni LLM |
+| `40e6229` | 2026-07-07 | `Mattia` | `phase1` | docs: estendi LOG_PROMPT con prompt ricostruiti a memoria (sez. F) |
 
 ## Sintesi per fase
 

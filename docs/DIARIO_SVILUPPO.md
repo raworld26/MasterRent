@@ -30,8 +30,8 @@ diario.
 | 2026-07-03 | Credenziali demo e semplificazione frontend | Commit `1df426f`, `68a0379` | UI tradizionale, credenziali demo |
 | 2026-07-04 | Flussi e catalogo | Commit `1ec2aa9`, `2e6508c`, `fdb4c4f` | Ricerca, annunci, dati demo, gestione |
 | 2026-07-05 | Moduli admin e diagramma Fase 1 | Commit `4a3cbef`, `2b303de` | Backend esteso e primo ER |
-| 2026-07-07 | Allineamento funzionale a Fase 2 | Commit `c1bb65a`, `2fb2a89`, `e6213fb`, `ef57113`, `57c7742`, `cb9c0d9` | Admin, routing, engagement, distanze manuali, vincolo una sola casa attuale |
-| 2026-07-07 | Deliverable documentali | Commit `bf5597b`, `03df105`, `3efd115` | ER, relazione, diario, prompt log, prompt ricostruiti |
+| 2026-07-07 | Allineamento funzionale a Fase 2 | Commit `c1bb65a`, `2fb2a89`, `63f13c8`, `e5ea6fe`, `a47e027`, `1919fcd` | Admin, routing, engagement, distanze manuali, vincolo una sola casa attuale |
+| 2026-07-07 | Deliverable documentali | Commit `11aaeaa` | ER, relazione, diario, log dei commit |
 
 ### Attivita Fase 1
 
