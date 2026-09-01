@@ -1,5 +1,8 @@
 # MasterRent - Fase 2 (Sviluppo Assistito da LLM)
 
+> Progetto universitario di Tecnologie Web, realizzato in team e valutato **28/30**.
+
+
 Questa è la **Fase 2** del progetto MasterRent. In questa fase il codice della Fase 1 è stato rifattorizzato, riorganizzato e ampliato tramite l'utilizzo intensivo di modelli linguistici di grandi dimensioni (LLM).
 
 ## Caratteristiche della Fase 2
