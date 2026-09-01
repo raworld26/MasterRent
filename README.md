@@ -11,6 +11,16 @@ Questa è la **Fase 2** del progetto MasterRent. In questa fase il codice della 
 - Adozione di un Design System coerente e moderno.
 - Database aggiornato e rinominato in: `uniaffitti`.
 
+## Modello dei dati
+
+Il progetto include un modello Entità-Relazione per rappresentare utenti, annunci, preferenze, servizi e flussi di interesse.
+
+[Apri il diagramma ER completo](https://github.com/raworld26/MasterRent/blob/main/docs/ER_DIAGRAM.png)
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/raworld26/MasterRent/main/docs/ER_DIAGRAM.png" alt="Diagramma Entità-Relazione di MasterRent" width="850">
+</p>
+
 ## Come Avviare (Fase 2)
 1. Assicurati di avere un server web (es. XAMPP, MAMP) con PHP 8.2 e MariaDB/MySQL.
 2. Crea un database chiamato `uniaffitti`.
